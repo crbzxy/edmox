@@ -1,0 +1,41 @@
+:root {
+  --space4: 4px;
+  --space8: 8px;
+  --space16: 16px;
+  --space24: 24px;
+  --space32: 32px;
+  --space40: 40px;
+  --space48: 48px;
+  --space64: 64px;
+
+  --radius8: 8px;
+  --radius12: 12px;
+
+  --fontFamilyBody: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --fontFamilyHeading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --fontFamilyMono: ui-monospace, Consolas, monospace;
+
+  --fontSizeBodySm: 14px;
+  --fontSizeBodyMd: 16px;
+  --fontSizeHeadingLg: 36px;
+
+  --lineHeightBody: 1.5;
+  --lineHeightHeading: 1.15;
+
+  --colorBackground: #ffffff;
+  --colorText: #111827;
+  --colorTextMuted: #6b7280;
+  --colorBorder: #e5e7eb;
+  --colorFocusRing: #111827;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --colorBackground: #0b0b0f;
+    --colorText: #f3f4f6;
+    --colorTextMuted: #9ca3af;
+    --colorBorder: #24252b;
+    --colorFocusRing: #f3f4f6;
+  }
+}
+
