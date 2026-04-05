@@ -1,27 +1,34 @@
-import styles from './Logo.module.css'
-import logoEdmox from '../../assets/logoEdmox.png'
+import { Box } from '@mui/material'
+import logoEdmox from '@/assets/logoEdmox.png'
 
 export type LogoProps = {
   alt: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'nav' | 'sm' | 'md' | 'lg'
 }
 
-const sizeClassNameBySize: Record<NonNullable<LogoProps['size']>, string> = {
-  sm: styles.sizeSm,
-  md: styles.sizeMd,
-  lg: styles.sizeLg,
+const logoWidthBySize: Record<NonNullable<LogoProps['size']>, number> = {
+  nav: 108,
+  sm: 120,
+  md: 176,
+  lg: 240,
 }
 
 export function Logo({ alt, size = 'md' }: LogoProps) {
   return (
-    <img
-      className={`${styles.logo} ${sizeClassNameBySize[size]}`}
+    <Box
+      component="img"
       src={logoEdmox}
       alt={alt}
       loading="eager"
       decoding="async"
       draggable={false}
+      sx={{
+        display: 'block',
+        height: 'auto',
+        width: logoWidthBySize[size],
+        userSelect: 'none',
+        WebkitUserDrag: 'none',
+      }}
     />
   )
 }
-
