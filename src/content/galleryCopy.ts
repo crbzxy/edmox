@@ -28,8 +28,8 @@ export const galleryCopy = {
       'Una colección curada de figuras japonesas de soft vinyl (sofubi). Cada pieza documentada con precisión de archivo — desde kaijus GID hasta ediciones limitadas pintadas a mano.',
     scrollHint: 'Desplázate para explorar',
     featuredOverline: 'Colección destacada',
-    featuredCaption: 'Vitrinas de la galería — Temporada 2024',
-    featuredImageAlt: 'Colección de sofubi kaiju en vitrina de galería',
+    featuredCaption: 'Vitrinas de la galería — Temporada 2026',
+    featuredImageAlt: 'Vitrina de piezas Ediciones Mox — kaiju y art toys en exhibición',
   },
 
   archive: {
@@ -43,14 +43,14 @@ export const galleryCopy = {
     titleLine1: 'La galería virtual',
     titleLine2Before: 'de ',
     titleAccent: 'sofubi',
-    paragraph1: `${brandShortName} nace de la pasión por el soft vinyl japonés — una forma de arte que fusiona la escultura tradicional con la cultura pop contemporánea. Desde kaijus clásicos hasta criaturas de diseñador, cada pieza en nuestro archivo representa lo mejor del coleccionismo independiente.`,
+    paragraph1: `${brandShortName} nace en Coyoacán, CDMX, de la pasión por el kaiju y el art toy independiente — escultura, impresión 3D en PLA y acabado pintado a mano con estética sofubi.`,
     paragraph2:
-      'Fundada en 2024, nuestra misión es documentar, preservar y compartir estas obras con la comunidad global de coleccionistas. Trabajamos directamente con artistas y estudios de Japón, Hong Kong y más allá para traer ediciones exclusivas.',
+      'Fundada en 2026, documentamos y compartimos cada edición limitada desde nuestro taller en la Ciudad de México. Cada pieza del archivo es diseño propio, producción artesanal y tirajes numerados.',
     stats: [
-      { value: '150+', label: 'Piezas documentadas' },
-      { value: '30+', label: 'Artistas colaboradores' },
-      { value: '12', label: 'Países de origen' },
-      { value: '2024', label: 'Año de fundación' },
+      { value: '0', label: 'Piezas documentadas' },
+      { value: 'Coyoacán', label: 'Sede del taller' },
+      { value: 'CDMX', label: 'Ciudad de origen' },
+      { value: '2026', label: 'Año de fundación' },
     ] as const,
     valuesTitle: 'Nuestros valores',
     values: [
@@ -70,8 +70,7 @@ export const galleryCopy = {
   },
 
   footer: {
-    instagram: 'Instagram',
-    contact: 'Contacto',
+    instagramCta: 'Escríbenos en Instagram →',
     copyrightLine: (year: number) => `© ${year} ${brandShortName}. Todos los derechos reservados.`,
   },
 
@@ -80,7 +79,7 @@ export const galleryCopy = {
     backArrow: '←',
     notFoundMessage: 'No encontramos esta pieza en el archivo.',
     pieceIdOverline: (specimenId: string) => `Pieza ${specimenId.toUpperCase()}`,
-    inquireCta: 'Consultar por esta pieza →',
+    inquireCta: 'Consultar en Instagram →',
     metaLabels: {
       material: 'Material',
       height: 'Altura',
@@ -107,10 +106,7 @@ export const galleryCopy = {
 /** Valores de filtro = `specimen.material` salvo `All`. La etiqueta es lo que ve el usuario. */
 export const archiveMaterialFilterOptions = [
   { value: 'All', label: 'Todos' },
-  { value: 'GID Vinyl', label: 'GID Vinyl' },
-  { value: 'Painted Vinyl', label: 'Painted Vinyl' },
-  { value: 'Clear Red Vinyl', label: 'Clear Red Vinyl' },
-  { value: 'Clear Orange Vinyl', label: 'Clear Orange Vinyl' },
+  { value: 'PLA pintado', label: 'PLA pintado' },
 ] as const
 
 export type ArchiveMaterialFilter = (typeof archiveMaterialFilterOptions)[number]['value']

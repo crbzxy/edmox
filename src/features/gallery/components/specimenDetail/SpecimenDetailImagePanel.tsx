@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { ProtectedImage } from '@/components/ProtectedImage'
 import { SPECIMEN_DETAIL_IMAGE_MAX_HEIGHT } from '@/constants/galleryUi'
 import type { Specimen } from '@/data/specimens'
 import { vitrineSurfaceSx } from '@/theme/createAppTheme'
@@ -33,16 +34,13 @@ export function SpecimenDetailImagePanel({ specimen }: SpecimenDetailImagePanelP
           minHeight: 0,
         }}
       >
-        <Box
-          component="img"
+        <ProtectedImage
           src={specimen.image}
           alt={specimen.name}
-          sx={{
-            display: 'block',
+          loading="eager"
+          imageSx={{
             maxWidth: '100%',
             maxHeight: SPECIMEN_DETAIL_IMAGE_MAX_HEIGHT,
-            width: 'auto',
-            height: 'auto',
             objectFit: 'contain',
           }}
         />

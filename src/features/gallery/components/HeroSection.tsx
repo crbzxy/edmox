@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
-import heroBg from '@/assets/hero-bg.jpg'
-import heroPhoto from '@/assets/hero-photo.jpg'
+import heroBg from '@/assets/hero-bg.webp'
+import heroFeatured from '@/assets/hero.webp'
 import { galleryCopy } from '@/content/galleryCopy'
 import { vitrineSurfaceSx } from '@/theme/createAppTheme'
 import { GalleryContentBounds } from './GalleryContentBounds'
@@ -36,9 +36,9 @@ function HeroFeaturedCard() {
     <Box sx={{ position: 'relative', ...vitrineSurfaceSx(theme.palette.mode), overflow: 'hidden' }}>
       <Box
         component="img"
-        src={heroPhoto}
+        src={heroFeatured}
         alt={hero.featuredImageAlt}
-        sx={{ width: '100%', height: { xs: 360, lg: 500 }, objectFit: 'cover', display: 'block' }}
+        sx={{ width: '100%', height: { xs: 360, lg: 500 }, objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
       />
       <Box
         sx={{

@@ -4,6 +4,7 @@ import { galleryCopy } from '@/content/galleryCopy'
 import { SECTION_ABOUT_ID } from '@/constants/gallery'
 import { GalleryContentBounds } from './GalleryContentBounds'
 import { vitrineSurfaceSx } from '@/theme/createAppTheme'
+import { specimens } from '@/data/specimens'
 
 function AboutIntro() {
   const { about } = galleryCopy
@@ -33,19 +34,29 @@ function AboutIntro() {
 function AboutStatsGrid() {
   const theme = useTheme()
   const cardSx = vitrineSurfaceSx(theme.palette.mode)
+  const specimenCount = specimens.length
+
+  function formatSpecimenCount(count: number): string {
+    if (count >= 100) return '100+'
+    return String(count)
+  }
 
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr' }, gap: 3 }}>
-      {galleryCopy.about.stats.map((stat) => (
-        <Box key={stat.label} sx={{ p: 3, ...cardSx }}>
+      {galleryCopy.about.stats.map((stat, index) => {
+        const value = index === 0 ? formatSpecimenCount(specimenCount) : stat.value
+
+        return (
+          <Box key={stat.label} sx={{ p: 3, ...cardSx }}>
           <Typography variant="h5" color="primary" sx={{ fontWeight: 700 }}>
-            {stat.value}
+            {value}
           </Typography>
           <Typography variant="overline" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
             {stat.label}
           </Typography>
-        </Box>
-      ))}
+          </Box>
+        )
+      })}
     </Box>
   )
 }

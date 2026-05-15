@@ -1,0 +1,54 @@
+[
+  {
+    "id": "mox-001",
+    "name": "CHUPALINAS / Edición GID",
+    "artist": "Ediciones Mox",
+    "year": 2026,
+    "material": "PLA pintado",
+    "height": "14cm",
+    "origin": "Coyoacán, CDMX, México",
+    "imageFile": "mox-001.webp",
+    "description": "Versión GID del kaiju original Chupalinas. Impresión FDM en PLA con acabado pintado a mano en verde fosforescente. Alas moldeadas por separado. Producción artesanal en tiraje limitado.",
+    "edition": "30",
+    "status": "pre-order"
+  },
+  {
+    "id": "mox-002",
+    "name": "GOLDITOS / Serie kawaii",
+    "artist": "Ediciones Mox",
+    "year": 2026,
+    "material": "PLA pintado",
+    "height": "6–8cm",
+    "origin": "Coyoacán, CDMX, México",
+    "imageFile": "mox-002.webp",
+    "description": "Serie de 4 micro-figuras impresas en PLA y pintadas a mano: conejo, oso, cerdo y murciélago-kaiju. Acabado en tonos rosas con translucidez simulada por aerógrafo.",
+    "edition": "Set 4 pzas / Ed. 50",
+    "status": "available"
+  },
+  {
+    "id": "mox-003",
+    "name": "ZURASHI / Mutante dual",
+    "artist": "Ediciones Mox",
+    "year": 2026,
+    "material": "PLA pintado",
+    "height": "18cm",
+    "origin": "Coyoacán, CDMX, México",
+    "imageFile": "mox-003.webp",
+    "description": "Kaiju de dos cabezas impreso en PLA y pintado con degradado iridiscente de morado a verde. Textura orgánica de musculatura expuesta trabajada con aerógrafo multicapa.",
+    "edition": "20",
+    "status": "available"
+  },
+  {
+    "id": "mox-004",
+    "name": "CHUPALINAS / Gold Shift",
+    "artist": "Ediciones Mox",
+    "year": 2026,
+    "material": "PLA pintado",
+    "height": "14cm",
+    "origin": "Coyoacán, CDMX, México",
+    "imageFile": "mox-004.webp",
+    "description": "Variante dorada de CHUPALINAS impresa en PLA y pintada con degradado metalizado de oro a morado-vino. Aerógrafo multicapa. Orejas con degradado rojo-dorado. Tiraje especial.",
+    "edition": "15",
+    "status": "sold"
+  }
+]
