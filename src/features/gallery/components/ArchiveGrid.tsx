@@ -1,4 +1,4 @@
-import { Box, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
+import { Box, Button, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import {
   archiveMaterialFilterOptions,
@@ -8,7 +8,7 @@ import {
 } from '@/content/galleryCopy'
 import { GRID_COLUMN_SPANS, SECTION_ARCHIVE_ID } from '@/constants/gallery'
 import { getSpecimensByArchiveFilter } from '@/services/specimens/catalog'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GalleryContentBounds } from './GalleryContentBounds'
 import { SpecimenCard } from './SpecimenCard'
 
@@ -59,8 +59,19 @@ function ArchiveToolbar({ filter, onFilterChange, count }: ArchiveToolbarProps) 
 }
 
 export function ArchiveGrid() {
+  const INITIAL_VISIBLE_COUNT = 12
+  const PAGE_SIZE = 12
+
   const [filter, setFilter] = useState<ArchiveMaterialFilter>(defaultArchiveMaterialFilter)
   const filtered = getSpecimensByArchiveFilter(filter)
+  const [visibleCount, setVisibleCount] = useState<number>(INITIAL_VISIBLE_COUNT)
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT)
+  }, [filter])
+
+  const visible = filtered.slice(0, visibleCount)
+  const canLoadMore = visibleCount < filtered.length
 
   return (
     <Box
@@ -74,12 +85,26 @@ export function ArchiveGrid() {
       <GalleryContentBounds>
         <ArchiveToolbar filter={filter} onFilterChange={setFilter} count={filtered.length} />
         <Grid container spacing={3}>
-          {filtered.map((specimen, index) => (
+          {visible.map((specimen, index) => (
             <Grid key={specimen.id} size={{ xs: 12, md: GRID_COLUMN_SPANS[index % GRID_COLUMN_SPANS.length] }}>
               <SpecimenCard specimen={specimen} index={index} />
             </Grid>
           ))}
         </Grid>
+
+        {canLoadMore && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, filtered.length))
+              }}
+              aria-label="Mostrar más piezas del archivo"
+            >
+              Mostrar más
+            </Button>
+          </Box>
+        )}
       </GalleryContentBounds>
     </Box>
   )

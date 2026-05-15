@@ -1,7 +1,7 @@
-import { Box, Link as MuiLink, Typography } from '@mui/material'
-import { Logo } from '@/components/Logo'
+import { Box, Button, Typography } from '@mui/material'
+import { LogoFooter } from '@/components/Logo'
 import { galleryCopy } from '@/content/galleryCopy'
-import { GALLERY_CONTACT_EMAIL, GALLERY_INSTAGRAM_URL } from '@/constants/gallery'
+import { GALLERY_INSTAGRAM_URL } from '@/constants/gallery'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
 export function GalleryFooter() {
@@ -27,29 +27,31 @@ export function GalleryFooter() {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 2 }}>
-          <Logo alt={brand.logoAlt} size="nav" />
+          <LogoFooter alt={brand.logoAlt} />
           <Typography variant="overline" color="text.secondary">
             {footer.copyrightLine(currentYear)}
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-          <MuiLink
-            href={GALLERY_INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            color="text.secondary"
-            sx={{ '&:hover': { color: 'text.primary' } }}
-          >
-            <Typography variant="overline">{footer.instagram}</Typography>
-          </MuiLink>
-          <MuiLink
-            href={`mailto:${GALLERY_CONTACT_EMAIL}`}
-            color="text.secondary"
-            sx={{ '&:hover': { color: 'text.primary' } }}
-          >
-            <Typography variant="overline">{footer.contact}</Typography>
-          </MuiLink>
-        </Box>
+        <Button
+          component="a"
+          href={GALLERY_INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="contained"
+          color="primary"
+          aria-label={footer.instagramCta}
+          sx={{
+            px: 3,
+            py: 1.25,
+            fontSize: '0.7rem',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            '&:hover': { filter: 'brightness(1.08)' },
+            '&:active': { filter: 'brightness(0.95)' },
+          }}
+        >
+          {footer.instagramCta}
+        </Button>
       </GalleryContentBounds>
     </Box>
   )

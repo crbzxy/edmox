@@ -1,6 +1,6 @@
 import { Box, Link as MuiLink, Typography } from '@mui/material'
 import { galleryCopy } from '@/content/galleryCopy'
-import { GALLERY_CONTACT_EMAIL } from '@/constants/gallery'
+import { GALLERY_INSTAGRAM_URL } from '@/constants/gallery'
 import type { Specimen } from '@/data/specimens'
 
 type SpecimenDetailMetaPanelProps = {
@@ -59,7 +59,13 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
       </Box>
       {specimen.status !== 'sold' && (
         <Box sx={{ mt: 6 }}>
-          <MuiLink href={`mailto:${GALLERY_CONTACT_EMAIL}`} color="primary" sx={{ '&:hover': { color: 'primary.light' } }}>
+          <MuiLink
+            href={GALLERY_INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            color="primary"
+            sx={{ '&:hover': { color: 'primary.light' } }}
+          >
             <Typography variant="overline">{inquireCta}</Typography>
           </MuiLink>
         </Box>

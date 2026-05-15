@@ -8,6 +8,7 @@ import {
   STAGGER_DELAY_STEP_MS,
   STATUS_DOT_SIZE_PX,
 } from '@/constants/galleryUi'
+import { ProtectedImage } from '@/components/ProtectedImage'
 import type { Specimen } from '@/data/specimens'
 import { vitrineSurfaceSx } from '@/theme/createAppTheme'
 
@@ -64,8 +65,7 @@ function SpecimenCardMedia({ specimen, index }: SpecimenCardMediaProps) {
           alignItems: 'center',
           justifyContent: 'center',
           bgcolor: 'secondary.main',
-          '& img': {
-            display: 'block',
+          '& .protected-image-media': {
             maxHeight: '100%',
             width: 'auto',
             height: 'auto',
@@ -73,17 +73,18 @@ function SpecimenCardMedia({ specimen, index }: SpecimenCardMediaProps) {
             objectFit: 'contain',
             objectPosition: 'center center',
             transition: 'filter 700ms ease',
+            transitionDelay: `${delay}ms`,
             filter: 'grayscale(1)',
           },
-          '&:hover img': {
+          '&:hover .protected-image-media': {
             filter: 'grayscale(0)',
           },
           '@media (prefers-reduced-motion: reduce)': {
-            '& img': { filter: 'none' },
+            '& .protected-image-media': { filter: 'none' },
           },
         }}
       >
-        <Box component="img" src={specimen.image} alt={specimen.name} loading="lazy" sx={{ transitionDelay: `${delay}ms` }} />
+        <ProtectedImage src={specimen.image} alt={specimen.name} loading="lazy" />
       </Box>
     </Box>
   )
