@@ -8,7 +8,7 @@ import {
 } from '@/content/galleryCopy'
 import { GRID_COLUMN_SPANS, SECTION_ARCHIVE_ID } from '@/constants/gallery'
 import { getSpecimensByArchiveFilter } from '@/services/specimens/catalog'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { GalleryContentBounds } from './GalleryContentBounds'
 import { SpecimenCard } from './SpecimenCard'
 
@@ -66,9 +66,10 @@ export function ArchiveGrid() {
   const filtered = getSpecimensByArchiveFilter(filter)
   const [visibleCount, setVisibleCount] = useState<number>(INITIAL_VISIBLE_COUNT)
 
-  useEffect(() => {
+  const handleFilterChange = (value: ArchiveMaterialFilter) => {
+    setFilter(value)
     setVisibleCount(INITIAL_VISIBLE_COUNT)
-  }, [filter])
+  }
 
   const visible = filtered.slice(0, visibleCount)
   const canLoadMore = visibleCount < filtered.length
@@ -83,7 +84,7 @@ export function ArchiveGrid() {
       }}
     >
       <GalleryContentBounds>
-        <ArchiveToolbar filter={filter} onFilterChange={setFilter} count={filtered.length} />
+        <ArchiveToolbar filter={filter} onFilterChange={handleFilterChange} count={filtered.length} />
         <Grid container spacing={3}>
           {visible.map((specimen, index) => (
             <Grid key={specimen.id} size={{ xs: 12, md: GRID_COLUMN_SPANS[index % GRID_COLUMN_SPANS.length] }}>
