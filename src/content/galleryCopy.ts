@@ -21,6 +21,16 @@ export const galleryCopy = {
     about: 'Taller',
     events: 'Eventos',
     instagram: 'Instagram',
+    mainAriaLabel: 'Navegación principal',
+    menuLabel: 'Menú',
+    openMenuAriaLabel: 'Abrir menú de navegación',
+    closeMenuLabel: 'Cerrar',
+    closeMenuAriaLabel: 'Cerrar menú de navegación',
+    drawerAriaLabel: 'Menú de navegación',
+    drawerEyebrow: `${brandShortName} / Menú`,
+    drawerTitle: 'Explora',
+    drawerTitleAccent: 'Mox.',
+    mobileNavAriaLabel: 'Navegación móvil y tablet',
   },
 
   hero: {
@@ -39,6 +49,14 @@ export const galleryCopy = {
 
   archive: {
     sectionTitle: 'Archivo',
+    eyebrow: `${brandShortName} / Catálogo 2026`,
+    eyebrowPlace: 'Coyoacán, CDMX ↗',
+    kicker: 'Tirajes cortos. Personajes propios.',
+    title: 'Fuera de',
+    titleAccent: 'serie',
+    intro:
+      'El archivo de nuestros monstruos. Explora las piezas, sus variantes y las colaboraciones que salen del taller.',
+    collaborationBadge: 'Colaboración',
     filterGroupAriaLabel: 'Filtrar por estado',
     countLabel: (pieceCount: number) => `${String(pieceCount).padStart(2, '0')} piezas`,
     loadMore: 'Mostrar más piezas',
@@ -47,6 +65,10 @@ export const galleryCopy = {
 
   about: {
     sectionTitle: 'El taller',
+    eyebrow: 'Detrás de las figuras / El taller',
+    title: 'De aquí.',
+    titleAccent: 'A tu vitrina.',
+    detailsSummary: 'Nuestra forma de hacer figuras',
     paragraph1: `${brandShortName} es un taller chico en Coyoacán, CDMX, que empezó en 2026. Hacemos personajes propios y, de vez en cuando, piezas en colaboración con otros artistas; cuando es así, lo decimos.`,
     paragraph2:
       'Hacemos esculturas de resina y personajes con impresión 3D, pintados a mano en tirajes cortos. El material y la edición cambian según la pieza; los indicamos en cada ficha.',
@@ -68,7 +90,20 @@ export const galleryCopy = {
     ] as const,
   },
 
+  events: {
+    eyebrow: 'Eventos / Archivo de participaciones',
+    title: 'Fuera del taller',
+    intro: 'Bazares y encuentros donde las figuras comparten espacio con otras formas de hacer arte.',
+    posterAlt: (name: string, dateLabel: string) => `Cartel de ${name}, ${dateLabel}`,
+    sourceCta: 'Ver publicación original',
+  },
+
   footer: {
+    eyebrow: 'Del taller a tu colección',
+    taglineLines: ['Personajes propios. Pintura a mano.', 'Hechos en Coyoacán, CDMX.'] as const,
+    navAriaLabel: 'Explorar desde el pie de página',
+    exploreTitle: 'Explora',
+    contactTitle: 'En contacto',
     ctaTitle: '¿Te interesa una pieza?',
     ctaBody: 'Preventas, disponibilidad y envíos los vemos por mensaje directo.',
     instagramCta: 'Escríbenos en Instagram',

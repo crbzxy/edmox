@@ -16,7 +16,7 @@ import { ui } from '@/theme/uiTokens'
 export function SpecimenCard({ specimen }: { specimen: Specimen }) {
   const { title, variant } = splitSpecimenName(specimen.name)
   const facts = [formatHeight(specimen.height), formatEdition(specimen.edition)].filter(Boolean)
-  const collaboration = specimen.id === 'mox-016'
+  const collaboration = Boolean(specimen.collaboration)
 
   return (
     <Box
@@ -63,7 +63,7 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
               transform: 'rotate(-3deg)',
             }}
           >
-            Colaboración
+            {galleryCopy.archive.collaborationBadge}
           </Typography>
         )}
       </Box>

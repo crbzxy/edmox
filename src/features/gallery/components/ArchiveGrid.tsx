@@ -43,9 +43,9 @@ export function ArchiveGrid() {
             borderBottom: `1px solid ${ui.ink}`,
           }}
         >
-          <Typography variant="overline">Ediciones Mox / Catálogo 2026</Typography>
+          <Typography variant="overline">{archive.eyebrow}</Typography>
           <Typography variant="overline" sx={{ textAlign: 'right' }}>
-            Coyoacán, CDMX ↗
+            {archive.eyebrowPlace}
           </Typography>
         </Box>
         <Box
@@ -59,22 +59,22 @@ export function ArchiveGrid() {
         >
           <Box>
             <Typography variant="overline" sx={{ color: ui.accentText, display: 'block', mb: 2 }}>
-              Tirajes cortos. Personajes propios.
+              {archive.kicker}
             </Typography>
             <Typography
               id="archive-title"
               variant="h2"
               sx={{ fontSize: { xs: '3.5rem', sm: '5rem', md: '6.5rem' }, lineHeight: 0.94 }}
             >
-              Fuera de
+              {archive.title}
               <Box component="span" sx={{ display: 'block', color: ui.accentText }}>
-                serie<span aria-hidden="true"> ✳</span>
+                {archive.titleAccent}
+                <span aria-hidden="true"> ✳</span>
               </Box>
             </Typography>
           </Box>
           <Typography variant="body1" sx={{ maxWidth: 360, color: ui.inkSoft }}>
-            El archivo de nuestros monstruos. Explora las piezas, sus variantes y las colaboraciones que salen del
-            taller.
+            {archive.intro}
           </Typography>
         </Box>
         <Box

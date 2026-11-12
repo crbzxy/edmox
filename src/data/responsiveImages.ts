@@ -6,7 +6,9 @@ const files = import.meta.glob<string>('@/assets/optimized/*.{webp,avif}', {
   import: 'default',
 })
 
-export function responsiveImage(name: string) {
+export type ResponsiveImage = { src: string; srcSet: string; width: number; height: number }
+
+export function responsiveImage(name: string): ResponsiveImage {
   const entry = manifest[name as keyof typeof manifest]
   if (!entry) throw new Error(`Missing responsive image: ${name}`)
   const variants = entry.variants.map((variant) => {

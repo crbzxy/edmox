@@ -1,10 +1,13 @@
 import { Box, Link, Typography } from '@mui/material'
+import { galleryCopy } from '@/content/galleryCopy'
 import { galleryEvents } from '@/data/events'
 import { SECTION_EVENTS_ID, SECTION_SCROLL_MARGIN } from '@/constants/gallery'
 import { ui } from '@/theme/uiTokens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
 export function EventsSection() {
+  const { events } = galleryCopy
+
   return (
     <Box
       component="section"
@@ -18,14 +21,15 @@ export function EventsSection() {
         >
           <Box>
             <Typography variant="overline" sx={{ display: 'block', color: ui.accentText, mb: 2 }}>
-              Eventos / Archivo de participaciones
+              {events.eyebrow}
             </Typography>
             <Typography id="events-title" variant="h2" sx={{ fontSize: { xs: '3rem', md: '5rem' }, lineHeight: 0.98 }}>
-              Fuera del taller<span aria-hidden="true"> ↗</span>
+              {events.title}
+              <span aria-hidden="true"> ↗</span>
             </Typography>
           </Box>
           <Typography variant="body2" sx={{ maxWidth: 320, color: ui.inkSoft }}>
-            Bazares y encuentros donde las figuras comparten espacio con otras formas de hacer arte.
+            {events.intro}
           </Typography>
         </Box>
         <Box
@@ -49,12 +53,14 @@ export function EventsSection() {
               <Box sx={{ p: { xs: 2, sm: 3 }, bgcolor: ui.surface, borderBottom: `1px solid ${ui.ink}` }}>
                 <Box
                   component="img"
-                  src={event.poster}
-                  alt={`Cartel de ${event.name}, ${event.dateLabel}`}
+                  src={event.poster.src}
+                  srcSet={event.poster.srcSet}
+                  sizes="(min-width: 600px) 340px, 280px"
+                  alt={events.posterAlt(event.name, event.dateLabel)}
                   loading="lazy"
                   decoding="async"
-                  width={800}
-                  height={event.id === 'geometra-2026' ? 1000 : 1067}
+                  width={event.poster.width}
+                  height={event.poster.height}
                   sx={{ display: 'block', width: '100%', height: { xs: 360, sm: 440 }, objectFit: 'contain' }}
                 />
               </Box>
@@ -91,7 +97,7 @@ export function EventsSection() {
                     '&:hover': { color: ui.accentText },
                   }}
                 >
-                  Ver publicación original ↗
+                  {events.sourceCta} ↗
                 </Link>
               </Box>
             </Box>

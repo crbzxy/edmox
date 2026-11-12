@@ -47,20 +47,20 @@ export function AboutSection() {
         >
           <Box>
             <Typography variant="overline" sx={{ display: 'block', mb: 3 }}>
-              Detrás de las figuras / El taller
+              {about.eyebrow}
             </Typography>
             <Typography
               id="about-title"
               variant="h2"
               sx={{ fontSize: { xs: '3.5rem', sm: '5rem', md: '6rem' }, lineHeight: 0.95 }}
             >
-              De aquí.
+              {about.title}
               <br />
               <Box
                 component="span"
                 sx={{ color: colors.paper, display: 'inline-block', borderBottom: `6px solid ${colors.red}` }}
               >
-                A tu vitrina.
+                {about.titleAccent}
               </Box>
             </Typography>
           </Box>
@@ -79,7 +79,7 @@ export function AboutSection() {
                 '& summary:focus-visible': { outline: '2px solid currentColor', outlineOffset: 4 },
               }}
             >
-              <Box component="summary">Nuestra forma de hacer figuras</Box>
+              <Box component="summary">{about.detailsSummary}</Box>
               <Typography variant="body2" sx={{ mt: 2, color: colors.bone }}>
                 {about.paragraph2}
               </Typography>

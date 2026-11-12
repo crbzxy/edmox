@@ -11,9 +11,10 @@ Este archivo es el estándar del repo: aplica a personas y a agentes por igual.
 | `npm run check`              | Lint + typecheck + validación del catálogo (correr antes de cada commit) |
 | `npm run build`              | Valida catálogo, genera sitemap/robots, typecheck y build de producción  |
 | `npm run format`             | Formatea con Prettier                                                    |
-| `npm run optimize:specimens` | Genera variantes AVIF/WebP y `manifest.json` de las piezas               |
+| `npm run optimize:specimens` | Convierte fotos PNG/JPG de `src/assets/specimens/` a WebP                |
+| `npm run optimize:images`    | Genera variantes AVIF/WebP y `manifest.json` (hero, eventos y piezas)    |
 
-CI (`.github/workflows/ci.yml`) corre lint, typecheck, validación y build en cada PR. Node 24 (`.nvmrc`).
+CI (`.github/workflows/ci.yml`) corre formato, lint, typecheck, validación y build en cada PR. Node 24 (`.nvmrc`).
 
 ## Estructura
 
@@ -35,7 +36,7 @@ Alias de import: `@/` apunta a `src/`. Usarlo siempre en vez de rutas relativas 
 ## Reglas
 
 1. **Textos**: todo texto visible y todo `aria-label` vive en `src/content/galleryCopy.ts`. Nada de strings de UI dentro de los componentes.
-2. **Colores**: desde el tema (`text.primary`, `primary.main`, …) o `brandPalette` de `src/theme/appColorTokens.ts`. ESLint bloquea hex sueltos en `.tsx`.
+2. **Colores y modo oscuro**: el sitio sigue `prefers-color-scheme` vía CSS variables del tema. En componentes usar claves del tema (`text.primary`, `accent.text`, …) o `ui` de `src/theme/uiTokens.ts` dentro de strings (`1px solid ${ui.ink}`). `brandPalette` solo para superficies de marca que no cambian (hero, bloque Taller, footer). Texto de acento siempre con `accent.text`/`ui.accentText` (no `primary.main`, que no tiene contraste suficiente en oscuro). ESLint bloquea hex sueltos en `.tsx`.
 3. **Rutas**: solo vía `appPaths` (`src/constants/paths.ts`). Si se agrega una ruta, actualizar también `scripts/generate-seo-files.mjs`.
 4. **Datos, no condicionales por id**: si una pieza o evento necesita un comportamiento distinto (etiqueta, tamaño, badge), se agrega un campo al dato. Nunca `if (specimen.id === 'mox-0XX')`.
 5. **Lógica del catálogo** (filtrar, formatear, ordenar) va en `src/services/specimens/catalog.ts` como funciones puras, no dentro de componentes.
@@ -46,10 +47,12 @@ Alias de import: `@/` apunta a `src/`. Usarlo siempre en vez de rutas relativas 
 
 ## Agregar una pieza al catálogo
 
-1. Copiar la foto a `src/assets/specimens/mox-0XX.webp`.
-2. `npm run optimize:specimens` (genera variantes en `src/assets/optimized/` y actualiza `manifest.json`).
-3. Agregar la entrada en `src/data/specimens.json` (`id` con formato `mox-001`; `status`: `available` | `sold` | `pre-order`).
-4. `npm run check`. El sitemap se regenera solo en el build.
+1. Copiar la foto a `src/assets/specimens/mox-0XX.(png|jpg|webp)`. Si no es WebP: `npm run optimize:specimens`.
+2. `npm run optimize:images` (genera variantes en `src/assets/optimized/` y actualiza `manifest.json`).
+3. Agregar la entrada en `src/data/specimens.json`. Obligatorios: `id` (`mox-001`), `name`, `artist`, `year`, `material`, `imageFile`, `description`. Opcionales: `height`, `origin`, `sourceUrl`, `edition`, `status` (`available` | `sold` | `pre-order`), `collaboration` (`true` muestra la insignia).
+4. `npm run check`. El validador rechaza campos desconocidos, tipos incorrectos e imágenes sin variantes. El sitemap se regenera solo en el build.
+
+Eventos: cartel en `src/assets/events/<id>.webp`, `npm run optimize:images` y entrada en `src/data/events.ts` con `poster: responsiveImage('event-<id>')`.
 
 ## Git
 

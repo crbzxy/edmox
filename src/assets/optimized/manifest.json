@@ -21,6 +21,40 @@
       }
     ]
   },
+  "event-bwookshop-2026": {
+    "originalBytes": 206530,
+    "width": 800,
+    "height": 1067,
+    "variants": [
+      {
+        "file": "event-bwookshop-2026-400.avif",
+        "width": 400,
+        "bytes": 48749
+      },
+      {
+        "file": "event-bwookshop-2026-800.avif",
+        "width": 800,
+        "bytes": 128836
+      }
+    ]
+  },
+  "event-geometra-2026": {
+    "originalBytes": 36496,
+    "width": 800,
+    "height": 1000,
+    "variants": [
+      {
+        "file": "event-geometra-2026-400.avif",
+        "width": 400,
+        "bytes": 7934
+      },
+      {
+        "file": "event-geometra-2026-800.avif",
+        "width": 800,
+        "bytes": 25343
+      }
+    ]
+  },
   "mox-001": {
     "originalBytes": 41250,
     "width": 900,

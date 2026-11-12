@@ -41,7 +41,7 @@ export function GalleryFooter() {
               borderBottom: '1px solid currentColor',
             }}
           >
-            <Typography variant="overline">Del taller a tu colección</Typography>
+            <Typography variant="overline">{footer.eyebrow}</Typography>
             <Typography aria-hidden="true" sx={{ fontSize: 32, lineHeight: 1 }}>
               ✳
             </Typography>
@@ -113,14 +113,14 @@ export function GalleryFooter() {
               <LogoFooter alt="" width={160} />
             </MuiLink>
             <Typography variant="body2" sx={{ mt: 3, maxWidth: 300 }}>
-              Personajes propios. Pintura a mano.
+              {footer.taglineLines[0]}
               <br />
-              Hechos en Coyoacán, CDMX.
+              {footer.taglineLines[1]}
             </Typography>
           </Box>
-          <Box component="nav" aria-label="Explorar desde el pie de página">
+          <Box component="nav" aria-label={footer.navAriaLabel}>
             <Typography component="h3" variant="overline" sx={{ color: colors.bone, mb: 2 }}>
-              Explora
+              {footer.exploreTitle}
             </Typography>
             <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
               {explore.map((link) => (
@@ -134,7 +134,7 @@ export function GalleryFooter() {
           </Box>
           <Box>
             <Typography component="h3" variant="overline" sx={{ color: colors.bone, mb: 2 }}>
-              En contacto
+              {footer.contactTitle}
             </Typography>
             <MuiLink href={GALLERY_INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" sx={footerLinkSx}>
               <Typography variant="body2">{brand.instagramHandle} ↗</Typography>
