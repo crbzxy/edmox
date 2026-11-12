@@ -46,10 +46,10 @@ async function optimizeSpecimenImages() {
 
   if (sources.length === 0) {
     if (existingWebp.length > 0) {
+      console.log(`Specimens: ya están en WebP (${existingWebp.length} archivo(s): ${existingWebp.join(', ')}).`)
       console.log(
-        `Specimens: ya están en WebP (${existingWebp.length} archivo(s): ${existingWebp.join(', ')}).`,
+        '  Para optimizar una pieza nueva, agrega p. ej. mox-005.png en src/assets/specimens/ y vuelve a ejecutar.',
       )
-      console.log('  Para optimizar una pieza nueva, agrega p. ej. mox-005.png en src/assets/specimens/ y vuelve a ejecutar.')
     } else {
       console.log('Specimens: no hay PNG/JPG ni WebP en src/assets/specimens/.')
     }
@@ -70,7 +70,6 @@ async function optimizeSpecimenImages() {
     })
 
     console.log(`  ${fileName} → ${baseName}.webp (${savedPercent}% más liviano)`)
-    fs.unlinkSync(sourcePath)
   }
 
   return sources.length
@@ -100,7 +99,6 @@ async function optimizeHeroImages() {
     })
 
     console.log(`  ${path.basename(sourcePath)} → ${baseName}.webp (${savedPercent}% más liviano)`)
-    fs.unlinkSync(sourcePath)
     converted += 1
   }
 

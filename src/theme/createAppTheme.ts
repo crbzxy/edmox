@@ -1,19 +1,31 @@
-import { alpha, createTheme, type PaletteMode } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import { appColorTokens, brandPalette } from './appColorTokens'
 
-const fontStack = "'Roboto', system-ui, 'Segoe UI', sans-serif"
+export const bodyFontFamily = "'Archivo Variable', 'Archivo', system-ui, 'Segoe UI', sans-serif"
+export const monoFontFamily = "'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace"
 
-function buildPalette(mode: PaletteMode) {
-  const colors = mode === 'light' ? appColorTokens.light : appColorTokens.dark
+/** Titulares tipo empaque de juguete: Archivo condensada y pesada, en mayúsculas. */
+export const displayTypeSx = {
+  fontFamily: bodyFontFamily,
+  fontWeight: 850,
+  fontStretch: '72%',
+  textTransform: 'uppercase',
+  letterSpacing: '-0.005em',
+  lineHeight: 0.9,
+} as const
+
+const easing = 'cubic-bezier(0.2, 0, 0, 1)'
+
+function buildPalette(colors: (typeof appColorTokens)['light' | 'dark']) {
   return {
-    mode,
     primary: {
       main: colors.primaryMain,
       contrastText: brandPalette.white,
       light: brandPalette.redEmphasis,
-      dark: brandPalette.redMuted,
+      dark: colors.primaryDark,
     },
     secondary: { main: colors.secondaryMain, contrastText: colors.secondaryContrast },
+    accent: { text: colors.accentText },
     background: {
       default: colors.backgroundDefault,
       paper: colors.backgroundPaper,
@@ -23,28 +35,38 @@ function buildPalette(mode: PaletteMode) {
       secondary: colors.textSecondary,
     },
     divider: colors.divider,
-    warning: {
-      main: mode === 'dark' ? '#fbbf24' : '#d97706',
-    },
   }
 }
 
-export function createAppTheme(mode: PaletteMode) {
+export function createAppTheme() {
   return createTheme({
-    palette: buildPalette(mode),
+    // CSS variables + esquemas: el navegador elige claro/oscuro con `prefers-color-scheme`, sin re-render.
+    cssVariables: { colorSchemeSelector: 'media' },
+    colorSchemes: {
+      light: { palette: buildPalette(appColorTokens.light) },
+      dark: { palette: buildPalette(appColorTokens.dark) },
+    },
     typography: {
-      fontFamily: fontStack,
-      h1: { fontFamily: fontStack, fontWeight: 300, letterSpacing: '-0.02em' },
-      h2: { fontFamily: fontStack, fontWeight: 300, fontStyle: 'italic', letterSpacing: '-0.02em' },
-      h3: { fontFamily: fontStack, fontWeight: 400, fontStyle: 'italic' },
-      body1: { fontSize: '0.9375rem', lineHeight: 1.6 },
-      body2: { fontSize: '0.8125rem', lineHeight: 1.6 },
+      fontFamily: bodyFontFamily,
+      h1: displayTypeSx,
+      h2: displayTypeSx,
+      h3: {
+        fontFamily: bodyFontFamily,
+        fontWeight: 800,
+        fontStretch: '85%',
+        textTransform: 'uppercase',
+        lineHeight: 1,
+      },
+      body1: { fontSize: '1.0625rem', lineHeight: 1.7 },
+      body2: { fontSize: '0.9375rem', lineHeight: 1.65 },
+      button: { fontWeight: 700, textTransform: 'none', letterSpacing: 0 },
       overline: {
-        fontFamily: fontStack,
-        fontSize: '0.625rem',
+        fontFamily: monoFontFamily,
+        fontSize: '0.75rem',
         fontWeight: 500,
-        letterSpacing: '0.2em',
-        lineHeight: 1.5,
+        letterSpacing: '0.02em',
+        lineHeight: 1.4,
+        textTransform: 'uppercase',
       },
     },
     shape: {
@@ -58,49 +80,48 @@ export function createAppTheme(mode: PaletteMode) {
             WebkitFontSmoothing: 'antialiased',
             MozOsxFontSmoothing: 'grayscale',
           },
+          ':where(a, button, [tabindex]):focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: 4,
+          },
+          '@media (prefers-reduced-motion: reduce)': {
+            '*, *::before, *::after': {
+              transitionDuration: '0.01ms !important',
+              animationDuration: '0.01ms !important',
+              animationIterationCount: '1 !important',
+              scrollBehavior: 'auto !important',
+            },
+          },
+          '::selection': { backgroundColor: brandPalette.red, color: brandPalette.white },
         },
       },
       MuiLink: {
-        defaultProps: {
-          underline: 'none',
-        },
+        // Color de enlace por defecto legible en ambos modos (primary.main no alcanza 4.5:1 sobre fondo oscuro).
+        defaultProps: { underline: 'none', color: 'accent.text' },
         styleOverrides: {
-          root: {
-            transition: 'color 200ms cubic-bezier(0.2, 0, 0, 1)',
-          },
+          root: { transition: `color 150ms ${easing}` },
         },
+      },
+      MuiButtonBase: {
+        defaultProps: { disableRipple: true },
       },
       MuiButton: {
+        defaultProps: { disableElevation: true },
         styleOverrides: {
           root: {
-            textTransform: 'none',
             borderRadius: 0,
-            transition:
-              'color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1)',
+            minHeight: 44,
+            padding: '12px 20px',
+            transition: `color 150ms ${easing}, background-color 150ms ${easing}, border-color 150ms ${easing}`,
           },
-        },
-      },
-      MuiToggleButton: {
-        styleOverrides: {
-          root: {
-            textTransform: 'none',
-            borderRadius: 0,
-            px: 2,
-            py: 1,
-            fontSize: '0.625rem',
-            fontWeight: 500,
-            letterSpacing: '0.15em',
-            transition:
-              'color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1)',
-          },
+          outlined: { borderWidth: 1.5, '&:hover': { borderWidth: 1.5 } },
         },
       },
       MuiAppBar: {
         styleOverrides: {
           root: ({ theme }) => ({
-            backgroundColor: alpha(theme.palette.background.default, 0.85),
-            backdropFilter: 'blur(20px)',
-            borderBottom: `1px solid ${alpha(theme.palette.common.white, theme.palette.mode === 'dark' ? 0.06 : 0.12)}`,
+            backgroundColor: theme.vars.palette.background.default,
+            borderBottom: `1.5px solid ${theme.vars.palette.text.primary}`,
             boxShadow: 'none',
           }),
         },
@@ -109,12 +130,4 @@ export function createAppTheme(mode: PaletteMode) {
   })
 }
 
-export function vitrineSurfaceSx(mode: PaletteMode) {
-  const colors = mode === 'light' ? appColorTokens.light : appColorTokens.dark
-  return {
-    backgroundColor: colors.vitrineGlass,
-    border: `1px solid ${colors.vitrineBorder}`,
-    boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.45)',
-    backdropFilter: 'blur(12px)',
-  } as const
-}
+export const appTheme = createAppTheme()

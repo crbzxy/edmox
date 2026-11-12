@@ -1,32 +1,49 @@
 import { Box } from '@mui/material'
-import Grid from '@mui/material/Grid2'
+import { useEffect } from 'react'
 import { useSpecimenByParamId } from '@/hooks/useSpecimenByParamId'
 import { GalleryContentBounds } from '../components/GalleryContentBounds'
+import { GalleryFooter } from '../components/GalleryFooter'
 import { SpecimenDetailBackLink } from '../components/specimenDetail/SpecimenDetailBackLink'
 import { SpecimenDetailImagePanel } from '../components/specimenDetail/SpecimenDetailImagePanel'
 import { SpecimenDetailMetaPanel } from '../components/specimenDetail/SpecimenDetailMetaPanel'
 import { SpecimenDetailMissing } from '../components/specimenDetail/SpecimenDetailMissing'
+import { SpecimenDetailPager } from '../components/specimenDetail/SpecimenDetailPager'
+import { SpecimenPageMeta } from '../components/specimenDetail/SpecimenPageMeta'
 
 export default function SpecimenDetailPage() {
   const specimen = useSpecimenByParamId()
+
+  // Al pasar de una ficha a otra con el paginador, empezar arriba.
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [specimen?.id])
 
   if (!specimen) {
     return <SpecimenDetailMissing />
   }
 
   return (
-    <Box sx={{ pt: { xs: 10, sm: 12 }, pb: { xs: 12, md: '15vh' } }}>
-      <GalleryContentBounds>
-        <SpecimenDetailBackLink />
-        <Grid container spacing={{ xs: 4, lg: 8 }}>
-          <Grid size={{ xs: 12, lg: 7 }}>
+    <>
+      <SpecimenPageMeta specimen={specimen} />
+      <Box sx={{ pt: { xs: 13, sm: 16 }, pb: { xs: 14, md: 18 } }}>
+        <GalleryContentBounds>
+          <SpecimenDetailBackLink />
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 7fr) minmax(0, 5fr)' },
+              columnGap: { md: 6, lg: 8 },
+              rowGap: 4,
+              alignItems: 'start',
+            }}
+          >
             <SpecimenDetailImagePanel specimen={specimen} />
-          </Grid>
-          <Grid size={{ xs: 12, lg: 5 }}>
             <SpecimenDetailMetaPanel specimen={specimen} />
-          </Grid>
-        </Grid>
-      </GalleryContentBounds>
-    </Box>
+          </Box>
+          <SpecimenDetailPager specimenId={specimen.id} />
+        </GalleryContentBounds>
+      </Box>
+      <GalleryFooter />
+    </>
   )
 }

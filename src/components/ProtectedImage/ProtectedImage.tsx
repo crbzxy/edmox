@@ -3,6 +3,8 @@ import type { SyntheticEvent } from 'react'
 
 type ProtectedImageProps = {
   src: string
+  srcSet?: string
+  sizes?: string
   alt: string
   loading?: 'eager' | 'lazy'
   imageSx?: BoxProps['sx']
@@ -13,18 +15,20 @@ function blockImageInteraction(event: SyntheticEvent) {
   event.preventDefault()
 }
 
-export function ProtectedImage({ src, alt, loading = 'lazy', imageSx, wrapperSx }: ProtectedImageProps) {
+export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imageSx, wrapperSx }: ProtectedImageProps) {
   return (
     <Box
       className="protected-image-root"
-      sx={{
-        position: 'relative',
-        display: 'inline-block',
-        maxWidth: '100%',
-        userSelect: 'none',
-        WebkitUserSelect: 'none',
-        ...wrapperSx,
-      }}
+      sx={[
+        {
+          position: 'relative',
+          display: 'inline-block',
+          maxWidth: '100%',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+        },
+        ...(Array.isArray(wrapperSx) ? wrapperSx : wrapperSx ? [wrapperSx] : []),
+      ]}
       onContextMenu={blockImageInteraction}
       onDragStart={blockImageInteraction}
     >
@@ -32,20 +36,25 @@ export function ProtectedImage({ src, alt, loading = 'lazy', imageSx, wrapperSx 
         component="img"
         className="protected-image-media"
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
+        decoding="async"
         alt={alt}
         loading={loading}
         draggable={false}
         onContextMenu={blockImageInteraction}
         onDragStart={blockImageInteraction}
-        sx={{
-          display: 'block',
-          maxWidth: '100%',
-          height: 'auto',
-          userSelect: 'none',
-          WebkitUserDrag: 'none',
-          pointerEvents: 'none',
-          ...imageSx,
-        }}
+        sx={[
+          {
+            display: 'block',
+            maxWidth: '100%',
+            height: 'auto',
+            userSelect: 'none',
+            WebkitUserDrag: 'none',
+            pointerEvents: 'none',
+          },
+          ...(Array.isArray(imageSx) ? imageSx : imageSx ? [imageSx] : []),
+        ]}
       />
       <Box
         aria-hidden

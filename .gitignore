@@ -12,6 +12,7 @@ _ref-gallery
 dist
 dist-ssr
 *.local
+reports
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Material fuente sin procesar (capturas, originales)
+originals
