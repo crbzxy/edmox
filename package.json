@@ -13,12 +13,14 @@
     "typecheck": "tsc -b",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run lint && npm run typecheck && npm run validate:specimens",
+    "check": "npm run lint && npm run typecheck && npm run validate:specimens && npm run check:images",
     "validate:specimens": "node scripts/validate-specimens.mjs",
     "optimize:specimens": "node scripts/optimize-specimen-images.mjs",
     "optimize:images": "node scripts/optimize-site-images.mjs",
     "export:logo-svg": "node scripts/export-edmox-sign-svg.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:images": "node scripts/check-image-metadata.mjs",
+    "strip:image-metadata": "node scripts/strip-image-metadata.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

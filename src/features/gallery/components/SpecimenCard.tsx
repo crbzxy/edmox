@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { appPaths } from '@/constants/paths'
+import { CARD_IMAGE_ASPECT_RATIO } from '@/constants/galleryUi'
 import { ProtectedImage } from '@/components/ProtectedImage'
 import type { Specimen } from '@/data/specimens'
 import {
@@ -39,7 +40,7 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
         '&:hover .card-arrow': { bgcolor: ui.accent, color: ui.onAccent, borderColor: ui.accent },
       }}
     >
-      <Box sx={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', bgcolor: ui.surface }}>
+      <Box sx={{ position: 'relative', aspectRatio: CARD_IMAGE_ASPECT_RATIO, overflow: 'hidden', bgcolor: ui.surface }}>
         <ProtectedImage
           src={specimen.image}
           srcSet={specimen.imageSrcSet}
