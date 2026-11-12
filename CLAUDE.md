@@ -54,6 +54,14 @@ Alias de import: `@/` apunta a `src/`. Usarlo siempre en vez de rutas relativas 
 
 Eventos: cartel en `src/assets/events/<id>.webp`, `npm run optimize:images` y entrada en `src/data/events.ts` con `poster: responsiveImage('event-<id>')`.
 
+## Privacidad y seguridad (el repo es público)
+
+- **Imágenes sin metadatos**: las fotos de celular pueden traer GPS del taller, modelo de cámara o autor. `npm run check:images` (también en `check` y CI) bloquea EXIF/XMP/IPTC; para limpiar: `npm run strip:image-metadata -- <archivo>`.
+- **Nada de secretos en el código**: claves, tokens o contraseñas van en variables de entorno de Netlify, nunca en archivos. `.env*` está ignorado.
+- **Sin datos personales**: no versionar teléfonos, correos o direcciones personales; el contacto público es Instagram (`brand.instagramHandle`). La ubicación pública es solo "Coyoacán, CDMX".
+- **Material de diseño fuera del repo**: `_ref-gallery/`, `reports/` y `originals/` están ignorados; no forzarlos con `git add -f`.
+- **Autor de commits**: usar el email `noreply` de GitHub (`git config user.email "<id>+<usuario>@users.noreply.github.com"`) para no publicar correos personales o de trabajo.
+
 ## Git
 
 - Ramas: `feat/…`, `fix/…`, `chore/…`, `content/…`, `perf/…`, `improve/…`.
