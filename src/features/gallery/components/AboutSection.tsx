@@ -1,110 +1,105 @@
-import { Box, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Link as MuiLink, Typography } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 import { galleryCopy } from '@/content/galleryCopy'
-import { SECTION_ABOUT_ID } from '@/constants/gallery'
+import { SECTION_ABOUT_ID, SECTION_SCROLL_MARGIN } from '@/constants/gallery'
+import { appPaths } from '@/constants/paths'
 import { GalleryContentBounds } from './GalleryContentBounds'
-import { vitrineSurfaceSx } from '@/theme/createAppTheme'
-import { specimens } from '@/data/specimens'
 
-function AboutIntro() {
+const inlineLinkSx = {
+  color: 'text.primary',
+  textDecoration: 'underline',
+  textDecorationThickness: '1px',
+  textUnderlineOffset: '3px',
+  '&:hover': { color: 'primary.main' },
+} as const
+
+function ProcessList() {
   const { about } = galleryCopy
   return (
     <Box>
-      <Typography variant="overline" color="primary">
-        {about.overline}
+      <Typography variant="overline" color="text.secondary" component="h3" sx={{ display: 'block', mb: 1.5 }}>
+        {about.processTitle}
       </Typography>
-      <Typography variant="h2" component="h2" sx={{ mt: 2, fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 700 }}>
-        {about.titleLine1}
-        <br />
-        {about.titleLine2Before}
-        <Box component="span" sx={{ color: 'primary.main' }}>
-          {about.titleAccent}
-        </Box>
-      </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mt: 3 }}>
-        {about.paragraph1}
-      </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-        {about.paragraph2}
-      </Typography>
-    </Box>
-  )
-}
-
-function AboutStatsGrid() {
-  const theme = useTheme()
-  const cardSx = vitrineSurfaceSx(theme.palette.mode)
-  const specimenCount = specimens.length
-
-  function formatSpecimenCount(count: number): string {
-    if (count >= 100) return '100+'
-    return String(count)
-  }
-
-  return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: '1fr 1fr' }, gap: 3 }}>
-      {galleryCopy.about.stats.map((stat, index) => {
-        const value = index === 0 ? formatSpecimenCount(specimenCount) : stat.value
-
-        return (
-          <Box key={stat.label} sx={{ p: 3, ...cardSx }}>
-          <Typography variant="h5" color="primary" sx={{ fontWeight: 700 }}>
-            {value}
-          </Typography>
-          <Typography variant="overline" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-            {stat.label}
-          </Typography>
+      <Box component="ol" sx={{ listStyle: 'none', m: 0, p: 0 }}>
+        {about.process.map((step, index) => (
+          <Box
+            component="li"
+            key={step.title}
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '2.5rem 1fr', sm: '3rem 9rem 1fr' },
+              columnGap: 2,
+              rowGap: 0.25,
+              alignItems: 'baseline',
+              py: 2,
+              borderTop: '1px solid',
+              borderColor: index === 0 ? 'text.primary' : 'divider',
+            }}
+          >
+            <Typography variant="overline" color="primary">
+              {String(index + 1).padStart(2, '0')}
+            </Typography>
+            <Typography variant="h3" component="span" sx={{ fontSize: '1.5rem' }}>
+              {step.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ gridColumn: { xs: '2', sm: 'auto' } }}>
+              {step.description}
+            </Typography>
           </Box>
-        )
-      })}
-    </Box>
-  )
-}
-
-function AboutValuesCard() {
-  const theme = useTheme()
-  const cardSx = vitrineSurfaceSx(theme.palette.mode)
-
-  return (
-    <Box sx={{ p: 3, ...cardSx, display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <Typography variant="body2" sx={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-        {galleryCopy.about.valuesTitle}
-      </Typography>
-      {galleryCopy.about.values.map((item) => (
-        <Box
-          key={item.title}
-          sx={{ borderTop: '1px solid', borderColor: 'divider', pt: 2, '&:first-of-type': { borderTop: 'none', pt: 0 } }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            {item.title}
-          </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block', lineHeight: 1.6 }}>
-            {item.description}
-          </Typography>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </Box>
   )
 }
 
 export function AboutSection() {
+  const { about } = galleryCopy
   return (
     <Box
       component="section"
       id={SECTION_ABOUT_ID}
-      sx={{
-        py: 12,
-        borderTop: '1px solid',
-        borderColor: 'divider',
-        /* Barra fija (Toolbar ~64–72px + padding): el ancla no queda tapada */
-        scrollMarginTop: { xs: '88px', sm: '96px' },
-      }}
+      aria-labelledby="about-title"
+      sx={{ pb: { xs: 10, md: 14 }, scrollMarginTop: SECTION_SCROLL_MARGIN }}
     >
-      <GalleryContentBounds sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' }, gap: 8 }}>
-        <AboutIntro />
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, justifyContent: 'center' }}>
-          <AboutStatsGrid />
-          <AboutValuesCard />
+      <GalleryContentBounds>
+        <Box sx={{ pt: 2, borderTop: '1.5px solid', borderColor: 'text.primary' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
+              columnGap: { md: 8, lg: 12 },
+              rowGap: 6,
+            }}
+          >
+            <Box>
+              <Typography id="about-title" variant="h2" sx={{ fontSize: { xs: '3rem', md: '4.5rem' } }}>
+                {about.sectionTitle}
+              </Typography>
+              <Typography variant="body1" sx={{ mt: 3, maxWidth: 460 }}>
+                {about.paragraph1}
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 460 }}>
+                {about.paragraph2}
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 460 }}>
+                {about.fauxfubi.before}
+                <MuiLink href={about.fauxfubi.href} target="_blank" rel="noopener noreferrer" sx={inlineLinkSx}>
+                  {about.fauxfubi.linkLabel}
+                </MuiLink>
+                {about.fauxfubi.after}
+              </Typography>
+              <MuiLink
+                component={RouterLink}
+                to={appPaths.links}
+                sx={{ display: 'inline-block', mt: 3, ...inlineLinkSx }}
+              >
+                <Typography variant="overline">{about.linksCta} →</Typography>
+              </MuiLink>
+            </Box>
+            <Box sx={{ pt: { md: 1 } }}>
+              <ProcessList />
+            </Box>
+          </Box>
         </Box>
       </GalleryContentBounds>
     </Box>

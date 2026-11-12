@@ -1,128 +1,91 @@
-import { Box, Typography } from '@mui/material'
-import { alpha, useTheme } from '@mui/material/styles'
-import heroBg from '@/assets/hero-bg.webp'
-import heroFeatured from '@/assets/hero.webp'
+import { Box, Button, Typography } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
+import { responsiveImage } from '@/data/responsiveImages'
 import { galleryCopy } from '@/content/galleryCopy'
-import { vitrineSurfaceSx } from '@/theme/createAppTheme'
+import { SECTION_ARCHIVE_ID } from '@/constants/gallery'
+import { appPaths } from '@/constants/paths'
+import { specimens } from '@/data/specimens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
-function HeroBackground() {
-  const theme = useTheme()
-  return (
-    <Box
-      sx={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 0,
-        '& img': { width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 },
-      }}
-    >
-      <Box component="img" src={heroBg} alt="" aria-hidden />
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: `linear-gradient(to top, ${theme.palette.background.default}, ${alpha(theme.palette.background.default, 0.7)}, ${alpha(theme.palette.background.default, 0.4)})`,
-        }}
-      />
-    </Box>
-  )
-}
-
-function HeroFeaturedCard() {
-  const theme = useTheme()
-  const { hero } = galleryCopy
-  return (
-    <Box sx={{ position: 'relative', ...vitrineSurfaceSx(theme.palette.mode), overflow: 'hidden' }}>
-      <Box
-        component="img"
-        src={heroFeatured}
-        alt={hero.featuredImageAlt}
-        sx={{ width: '100%', height: { xs: 360, lg: 500 }, objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          p: 3,
-          background: `linear-gradient(to top, ${alpha(theme.palette.background.default, 0.92)}, transparent)`,
-        }}
-      >
-        <Typography variant="overline" color="primary">
-          {hero.featuredOverline}
-        </Typography>
-        <Typography variant="body2" color="text.primary" sx={{ mt: 0.5, fontWeight: 500 }}>
-          {hero.featuredCaption}
-        </Typography>
-      </Box>
-    </Box>
-  )
-}
+const heroFeatured = responsiveImage('hero')
 
 export function HeroSection() {
   const { hero } = galleryCopy
+
   return (
-    <Box
-      component="section"
-      sx={{
-        position: 'relative',
-        minHeight: '100svh',
-        display: 'flex',
-        alignItems: 'center',
-        overflow: 'hidden',
-      }}
-    >
-      <HeroBackground />
-      <GalleryContentBounds
-        sx={{
-          position: 'relative',
-          zIndex: 1,
-          py: { xs: 12, md: 16 },
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
-          gap: { xs: 4, lg: 6 },
-          alignItems: 'center',
-        }}
-      >
-        <Box>
-          <Typography variant="overline" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
-            {hero.eyebrow}
+    <Box component="section" sx={{ pt: { xs: 12, sm: 15 }, pb: { xs: 6, md: 8 } }}>
+      <GalleryContentBounds>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '7fr 4fr' },
+            columnGap: { md: 6, lg: 10 },
+            rowGap: 3,
+            alignItems: 'end',
+          }}
+        >
+          <Typography variant="h1" sx={{ fontSize: { xs: '3.25rem', sm: '4.5rem', lg: '6.25rem' }, textWrap: 'balance' }}>
+            {hero.title}
           </Typography>
-          <Typography
-            variant="h1"
-            component="h1"
+          <Box sx={{ pb: { md: 1 } }}>
+            <Typography variant="body1" sx={{ maxWidth: 380 }}>
+              {hero.description}
+            </Typography>
+            <Button
+              component={RouterLink}
+              to={{ pathname: appPaths.home, hash: SECTION_ARCHIVE_ID }}
+              variant="contained"
+              color="primary"
+              sx={{ mt: 3 }}
+            >
+              {hero.archiveCta} ↓
+            </Button>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            mt: { xs: 5, md: 7 },
+            pt: 1.25,
+            borderTop: '1.5px solid',
+            borderColor: 'text.primary',
+            display: 'flex',
+            flexWrap: 'wrap',
+            columnGap: 3,
+            rowGap: 0.5,
+            color: 'text.secondary',
+          }}
+        >
+          {hero.metaLine(specimens.length).map((item) => (
+            <Typography key={item} variant="overline">
+              {item}
+            </Typography>
+          ))}
+        </Box>
+
+        <Box component="figure" sx={{ m: 0, mt: 1.5 }}>
+          <Box
+            component="img"
+            src={heroFeatured.src}
+            srcSet={heroFeatured.srcSet}
+            sizes="(min-width: 1280px) 1232px, (min-width: 600px) calc(100vw - 48px), calc(100vw - 32px)"
+            width={heroFeatured.width}
+            height={heroFeatured.height}
+            alt={hero.featuredImageAlt}
+            fetchPriority="high"
             sx={{
-              fontSize: { xs: '2.75rem', md: '4.5rem', lg: '5.5rem' },
-              fontWeight: 700,
-              lineHeight: 0.95,
-            }}
-          >
-            {hero.titleLine1}
-            <br />
-            <Box component="span" sx={{ color: 'primary.main' }}>
-              {hero.titleAccent}
-            </Box>
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 4, maxWidth: 420 }}>
-            {hero.description}
-          </Typography>
-          <Typography
-            variant="overline"
-            color="text.secondary"
-            sx={{
-              mt: 6,
               display: 'block',
-              '@keyframes heroScrollHint': { '0%, 100%': { opacity: 0.55 }, '50%': { opacity: 1 } },
-              animation: 'heroScrollHint 2.4s ease-in-out infinite',
-              '@media (prefers-reduced-motion: reduce)': { animation: 'none', opacity: 0.85 },
+              width: '100%',
+              aspectRatio: { xs: '4 / 3', md: '21 / 9' },
+              objectFit: 'cover',
+              objectPosition: 'center 62%',
+              bgcolor: 'common.black',
             }}
-          >
-            {hero.scrollHint}
+          />
+          <Typography component="figcaption" variant="overline" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+            {hero.featuredCaption}
           </Typography>
         </Box>
-        <HeroFeaturedCard />
       </GalleryContentBounds>
     </Box>
   )

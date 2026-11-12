@@ -19,12 +19,12 @@ export default function NotFoundPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'secondary.main',
+        bgcolor: 'background.default',
         px: 2,
       }}
     >
       <Box sx={{ textAlign: 'center', maxWidth: 400 }}>
-        <Typography variant="h3" component="h1" sx={{ mb: 2, fontWeight: 700 }}>
+        <Typography variant="h1" sx={{ mb: 2, fontSize: { xs: "6rem", md: "9rem" }, color: "primary.main" }}>
           {notFound.title}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>

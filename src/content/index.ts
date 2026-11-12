@@ -1,6 +1,6 @@
 export {
-  archiveMaterialFilterOptions,
-  defaultArchiveMaterialFilter,
+  archiveStatusFilterOptions,
+  defaultArchiveStatusFilter,
   galleryCopy,
-  type ArchiveMaterialFilter,
+  type ArchiveStatusFilter,
 } from './galleryCopy'

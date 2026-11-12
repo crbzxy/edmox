@@ -3,6 +3,7 @@ const specimenSegment = 'specimen' as const
 
 export const appPaths = {
   home: '/',
+  links: '/sitios-de-interes',
   specimenSegment,
   specimenDetail: (specimenId: string) => `/${specimenSegment}/${encodeURIComponent(specimenId)}`,
 } as const
