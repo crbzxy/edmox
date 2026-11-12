@@ -1,8 +1,8 @@
 import { Box, Link as MuiLink, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { galleryCopy } from '@/content/galleryCopy'
-import { appPaths } from '@/constants/paths'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { linksPageMeta } from '@/seo/pageMeta'
 import { GalleryContentBounds } from '../components/GalleryContentBounds'
 import { GalleryFooter } from '../components/GalleryFooter'
 
@@ -13,11 +13,7 @@ export default function LinksPage() {
     window.scrollTo({ top: 0 })
   }, [])
 
-  usePageMeta({
-    title: `${links.pageTitle} · Ediciones Mox`,
-    description: links.metaDescription,
-    path: appPaths.links,
-  })
+  usePageMeta(linksPageMeta())
 
   return (
     <>

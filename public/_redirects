@@ -1,2 +1,2 @@
-/*    /index.html   200
-
+# Rutas sin HTML prerenderizado (scripts/postbuild-seo.mjs) reciben la SPA con status 404 real.
+/*    /404.html   404

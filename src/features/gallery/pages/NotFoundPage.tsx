@@ -1,16 +1,15 @@
 import { Box, Button, Typography } from '@mui/material'
 import { galleryCopy } from '@/content/galleryCopy'
 import { appPaths } from '@/constants/paths'
-import { useEffect } from 'react'
+import { usePageMeta } from '@/hooks/usePageMeta'
+import { notFoundPageMeta } from '@/seo/pageMeta'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 export default function NotFoundPage() {
   const location = useLocation()
   const { notFound } = galleryCopy
 
-  useEffect(() => {
-    console.error('404: ruta inexistente:', location.pathname)
-  }, [location.pathname])
+  usePageMeta(notFoundPageMeta(location.pathname))
 
   return (
     <Box
