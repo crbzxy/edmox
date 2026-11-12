@@ -1,6 +1,6 @@
 /**
  * Paleta derivada del logo Ediciones Mox (banda rojo carmesí + negro + tipografía blanca).
- * Valores tomados del PNG de marca; no usar hex sueltos en componentes.
+ * El fondo claro imita papel de catálogo impreso; no usar hex sueltos en componentes.
  */
 /** Radio visual del logo PNG (esquinas redondeadas). */
 export const LOGO_CORNER_RADIUS_PX = 12
@@ -10,40 +10,35 @@ export const brandPalette = {
   redMuted: '#8B2425',
   redEmphasis: '#C43E3F',
   black: '#000000',
-  ink: '#0A0A0A',
-  inkElevated: '#141414',
   white: '#FFFFFF',
-  fog: '#F5F4F4',
-  mist: '#E8E6E6',
-  slate: '#6B6565',
-  graphite: '#2A2828',
+  paper: '#EFECE6',
+  paperRaised: '#F7F5F1',
+  ink: '#161414',
+  inkSoft: '#5E5856',
+  night: '#0E0D0D',
+  nightRaised: '#191717',
+  bone: '#F1EEE9',
 } as const
 
 export const appColorTokens = {
   light: {
-    backgroundDefault: brandPalette.fog,
-    backgroundPaper: brandPalette.white,
-    textPrimary: brandPalette.graphite,
-    textSecondary: brandPalette.slate,
-    divider: brandPalette.mist,
+    backgroundDefault: brandPalette.paper,
+    backgroundPaper: brandPalette.paperRaised,
+    textPrimary: brandPalette.ink,
+    textSecondary: brandPalette.inkSoft,
+    divider: 'rgba(22, 20, 20, 0.16)',
     primaryMain: brandPalette.red,
-    secondaryMain: brandPalette.mist,
-    secondaryContrast: brandPalette.graphite,
-    focusRing: brandPalette.red,
-    vitrineGlass: 'rgba(166, 44, 45, 0.06)',
-    vitrineBorder: 'rgba(42, 40, 40, 0.12)',
+    secondaryMain: '#E2DED7',
+    secondaryContrast: brandPalette.ink,
   },
   dark: {
-    backgroundDefault: brandPalette.ink,
-    backgroundPaper: brandPalette.inkElevated,
-    textPrimary: brandPalette.white,
-    textSecondary: 'rgba(255, 255, 255, 0.62)',
-    divider: 'rgba(255, 255, 255, 0.1)',
-    primaryMain: brandPalette.red,
-    secondaryMain: '#1C1C1C',
-    secondaryContrast: brandPalette.white,
-    focusRing: brandPalette.redEmphasis,
-    vitrineGlass: 'rgba(255, 255, 255, 0.04)',
-    vitrineBorder: 'rgba(255, 255, 255, 0.12)',
+    backgroundDefault: brandPalette.night,
+    backgroundPaper: brandPalette.nightRaised,
+    textPrimary: brandPalette.bone,
+    textSecondary: 'rgba(241, 238, 233, 0.64)',
+    divider: 'rgba(241, 238, 233, 0.14)',
+    primaryMain: brandPalette.redEmphasis,
+    secondaryMain: '#1F1C1C',
+    secondaryContrast: brandPalette.bone,
   },
 } as const
