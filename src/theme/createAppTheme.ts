@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles'
 import { appColorTokens, brandPalette } from './appColorTokens'
 
-export const bodyFontFamily = "'Archivo', system-ui, 'Segoe UI', sans-serif"
+export const bodyFontFamily = "'Archivo Variable', 'Archivo', system-ui, 'Segoe UI', sans-serif"
 export const monoFontFamily = "'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace"
 
 /** Titulares tipo empaque de juguete: Archivo condensada y pesada, en mayúsculas. */
@@ -96,7 +96,8 @@ export function createAppTheme() {
         },
       },
       MuiLink: {
-        defaultProps: { underline: 'none' },
+        // Color de enlace por defecto legible en ambos modos (primary.main no alcanza 4.5:1 sobre fondo oscuro).
+        defaultProps: { underline: 'none', color: 'accent.text' },
         styleOverrides: {
           root: { transition: `color 150ms ${easing}` },
         },

@@ -68,7 +68,7 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
         <Typography
           variant="h3"
           component="p"
-          color="primary"
+          color="accent.text"
           sx={{ mt: 1, fontSize: { xs: '1.5rem', md: '1.75rem' } }}
         >
           {variant}
@@ -95,7 +95,7 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
             textUnderlineOffset: '4px',
           }}
         >
-          Ver publicación original ↗
+          {galleryCopy.specimenDetail.sourceCta} ↗
         </MuiLink>
       )}
 
