@@ -2,91 +2,78 @@ import { Box, Button, Typography } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { responsiveImage } from '@/data/responsiveImages'
 import { galleryCopy } from '@/content/galleryCopy'
-import { SECTION_ARCHIVE_ID } from '@/constants/gallery'
+import { GALLERY_HEADER_HEIGHT, SECTION_ARCHIVE_ID } from '@/constants/gallery'
 import { appPaths } from '@/constants/paths'
 import { specimens } from '@/data/specimens'
+import { brandPalette } from '@/theme/appColorTokens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
 const heroFeatured = responsiveImage('hero')
 
 export function HeroSection() {
-  const { hero } = galleryCopy
+  const { hero, brand } = galleryCopy
 
   return (
-    <Box component="section" sx={{ pt: { xs: 12, sm: 15 }, pb: { xs: 6, md: 8 } }}>
-      <GalleryContentBounds>
+    <Box component="section" aria-labelledby="hero-title" sx={{ pt: GALLERY_HEADER_HEIGHT }}>
+      <Box sx={{
+        position: 'relative', isolation: 'isolate', display: 'flex', alignItems: 'flex-end',
+        minHeight: { xs: 620, sm: 680, md: `clamp(620px, calc(100svh - ${GALLERY_HEADER_HEIGHT.sm}), 780px)` },
+        bgcolor: brandPalette.black, color: brandPalette.white,
+      }}>
         <Box
+          component="img"
+          src={heroFeatured.src}
+          srcSet={heroFeatured.srcSet}
+          sizes="100vw"
+          width={heroFeatured.width}
+          height={heroFeatured.height}
+          alt={hero.featuredImageAlt}
+          fetchPriority="high"
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '7fr 4fr' },
-            columnGap: { md: 6, lg: 10 },
-            rowGap: 3,
-            alignItems: 'end',
+            position: 'absolute', inset: 0, zIndex: -2, display: 'block',
+            width: '100%', height: '100%', objectFit: 'cover',
+            objectPosition: { xs: '54% center', md: 'center 58%' },
           }}
-        >
-          <Typography variant="h1" sx={{ fontSize: { xs: '3.25rem', sm: '4.5rem', lg: '6.25rem' }, textWrap: 'balance' }}>
-            {hero.title}
-          </Typography>
-          <Box sx={{ pb: { md: 1 } }}>
-            <Typography variant="body1" sx={{ maxWidth: 380 }}>
+        />
+        <Box aria-hidden="true" sx={{
+          position: 'absolute', inset: 0, zIndex: -1,
+          background: {
+            xs: 'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.96) 100%)',
+            md: 'linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.6) 44%, rgba(0,0,0,0.08) 100%), linear-gradient(0deg, rgba(0,0,0,0.5), transparent 60%)',
+          },
+        }} />
+        <GalleryContentBounds sx={{ py: { xs: 6, sm: 8, md: 10 } }}>
+          <Box sx={{ maxWidth: 720 }}>
+            <Typography variant="overline" sx={{ display: 'inline-block', mb: 3, px: 1.5, py: 1, bgcolor: brandPalette.red }}>
+              {brand.shortName} · {hero.eyebrow}
+            </Typography>
+            <Typography id="hero-title" variant="h1" sx={{
+              fontSize: { xs: 'clamp(2.75rem, 10vw, 4rem)', sm: '4.5rem', md: '5.5rem' },
+              lineHeight: 0.98, textWrap: 'balance',
+            }}>
+              {hero.title}
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 3, maxWidth: 490, color: brandPalette.bone }}>
               {hero.description}
             </Typography>
             <Button
               component={RouterLink}
               to={{ pathname: appPaths.home, hash: SECTION_ARCHIVE_ID }}
               variant="contained"
-              color="primary"
-              sx={{ mt: 3 }}
+              sx={{ mt: 4, px: 4, bgcolor: brandPalette.red, color: brandPalette.white, '&:hover': { bgcolor: brandPalette.redMuted } }}
             >
               {hero.archiveCta} ↓
             </Button>
           </Box>
-        </Box>
-
-        <Box
-          sx={{
-            mt: { xs: 5, md: 7 },
-            pt: 1.25,
-            borderTop: '1.5px solid',
-            borderColor: 'text.primary',
-            display: 'flex',
-            flexWrap: 'wrap',
-            columnGap: 3,
-            rowGap: 0.5,
-            color: 'text.secondary',
-          }}
-        >
+        </GalleryContentBounds>
+      </Box>
+      <Box sx={{ borderBottom: '1px solid', borderColor: 'divider' }}>
+        <GalleryContentBounds sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', columnGap: { xs: 3, md: 5 }, rowGap: 1.5, py: 3 }}>
           {hero.metaLine(specimens.length).map((item) => (
-            <Typography key={item} variant="overline">
-              {item}
-            </Typography>
+            <Typography key={item} variant="overline" color="text.secondary">{item}</Typography>
           ))}
-        </Box>
-
-        <Box component="figure" sx={{ m: 0, mt: 1.5 }}>
-          <Box
-            component="img"
-            src={heroFeatured.src}
-            srcSet={heroFeatured.srcSet}
-            sizes="(min-width: 1280px) 1232px, (min-width: 600px) calc(100vw - 48px), calc(100vw - 32px)"
-            width={heroFeatured.width}
-            height={heroFeatured.height}
-            alt={hero.featuredImageAlt}
-            fetchPriority="high"
-            sx={{
-              display: 'block',
-              width: '100%',
-              aspectRatio: { xs: '4 / 3', md: '21 / 9' },
-              objectFit: 'cover',
-              objectPosition: 'center 62%',
-              bgcolor: 'common.black',
-            }}
-          />
-          <Typography component="figcaption" variant="overline" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-            {hero.featuredCaption}
-          </Typography>
-        </Box>
-      </GalleryContentBounds>
+        </GalleryContentBounds>
+      </Box>
     </Box>
   )
 }

@@ -11,6 +11,7 @@ export type Specimen = {
   origin?: string
   image: string
   imageSrcSet: string
+  sourceUrl?: string
   description: string
   edition?: string
   status?: 'available' | 'sold' | 'pre-order'
@@ -22,6 +23,7 @@ export const specimens: Specimen[] = (specimensJson as SpecimenJson[]).map((item
   id: item.id,
   name: item.name,
   artist: item.artist,
+  sourceUrl: item.sourceUrl,
   year: item.year,
   material: item.material,
   height: item.height,

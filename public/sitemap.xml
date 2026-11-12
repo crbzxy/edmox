@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://edicionesmox.art/</loc><lastmod>2026-11-12</lastmod><priority>1.0</priority></url>
   <url><loc>https://edicionesmox.art/sitios-de-interes</loc><lastmod>2026-11-12</lastmod><priority>0.5</priority></url>
+  <url><loc>https://edicionesmox.art/specimen/mox-016</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-001</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-002</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-003</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
@@ -17,6 +18,6 @@
   <url><loc>https://edicionesmox.art/specimen/mox-013</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-014</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-015</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://edicionesmox.art/specimen/mox-016</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://edicionesmox.art/specimen/mox-017</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://edicionesmox.art/specimen/mox-018</loc><lastmod>2026-11-12</lastmod><priority>0.8</priority></url>
 </urlset>

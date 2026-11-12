@@ -19,13 +19,15 @@ export const galleryCopy = {
   nav: {
     archive: 'Archivo',
     about: 'Taller',
+    events: 'Eventos',
     instagram: 'Instagram',
   },
 
   hero: {
-    title: 'Monstruos de aquí, impresos y pintados a mano en Coyoacán',
+    eyebrow: 'Juguetes de autor',
+    title: 'Monstruos de aquí. Hechos a mano.',
     description:
-      'Diseñamos cada personaje, lo imprimimos en PLA y lo pintamos a pincel y aerógrafo. Salen de lo que tenemos cerca, como el Judas de cartonería o la mascota virtual de los 90. Tirajes cortos y numerados.',
+      'Personajes propios, pintura a mano y tirajes cortos. Del taller en Coyoacán a tu colección.',
     metaLine: (pieceCount: number) => [`${String(pieceCount).padStart(2, '0')} piezas en archivo`, 'Taller desde 2026', 'CDMX'],
     archiveCta: 'Ver el archivo',
     featuredImageAlt: 'Vitrina con figuras de Ediciones Mox: CHUPALINAS, GOLDITOS y ZURASHI',
@@ -44,7 +46,7 @@ export const galleryCopy = {
     sectionTitle: 'El taller',
     paragraph1: `${brandShortName} es un taller chico en Coyoacán, CDMX, que empezó en 2026. Hacemos personajes propios y, de vez en cuando, piezas en colaboración con otros artistas; cuando es así, lo decimos.`,
     paragraph2:
-      'No hacemos sofubi. El sofubi es vinil suave vaciado en moldes de metal, y le tenemos respeto a ese oficio. Lo nuestro sale de una impresora 3D y se pinta a mano, una pieza a la vez; por eso los tirajes son cortos y cada figura va numerada.',
+      'Hacemos esculturas de resina y personajes con impresión 3D, pintados a mano en tirajes cortos. El material y la edición cambian según la pieza; los indicamos en cada ficha.',
     /** Párrafo con cita: texto antes del enlace, enlace y texto después. */
     fauxfubi: {
       before: 'Hacemos algo más parecido a un fauxfubi: figuras con espíritu de sofubi hechas por otros caminos. Tomamos la palabra de trabajos como ',
@@ -56,9 +58,9 @@ export const galleryCopy = {
     processTitle: 'Cómo se hace una pieza',
     process: [
       { title: 'Escultura', description: 'Diseñamos y esculpimos el personaje en el taller.' },
-      { title: 'Impresión', description: 'Se imprime en PLA; alas y piezas sueltas por separado.' },
+      { title: 'Producción', description: 'Resina o impresión 3D, según el personaje y su edición.' },
       { title: 'Pintura', description: 'Base a pincel y degradados con aerógrafo, en varias capas.' },
-      { title: 'Numerado', description: 'Cada tiraje se cierra al llegar a su número de piezas.' },
+      { title: 'Edición', description: 'Cada pieza forma parte de un tiraje con sus propios materiales y acabados.' },
     ] as const,
   },
 

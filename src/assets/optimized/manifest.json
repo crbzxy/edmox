@@ -389,5 +389,27 @@
         "bytes": 57811
       }
     ]
+  },
+  "mox-018": {
+    "originalBytes": 132368,
+    "width": 1365,
+    "height": 1820,
+    "variants": [
+      {
+        "file": "mox-018-400.avif",
+        "width": 400,
+        "bytes": 15334
+      },
+      {
+        "file": "mox-018-800.avif",
+        "width": 800,
+        "bytes": 37761
+      },
+      {
+        "file": "mox-018-1365.avif",
+        "width": 1365,
+        "bytes": 77460
+      }
+    ]
   }
 }

@@ -1,5 +1,16 @@
 [
   {
+    "id": "mox-016",
+    "name": "TAMALUCHI / Colaboración con Gabriela Sandoval",
+    "artist": "Ediciones Mox × Gabriela Sandoval",
+    "year": 2026,
+    "material": "Resina",
+    "sourceUrl": "https://www.instagram.com/gabosanrex/p/DbLyA3moLTE/",
+    "imageFile": "mox-016.webp",
+    "description": "Pieza hecha con Gabriela Sandoval (@gabosanrex): una mascota virtual de los 90 convertida en figura. Edición en resina con textura granulada azul pastel, pantalla verde con dibujo, botones rosas y corazón en la parte de arriba.",
+    "status": "available"
+  },
+  {
     "id": "mox-001",
     "name": "CHUPALINAS / Edición GID",
     "artist": "Ediciones Mox",
@@ -41,6 +52,7 @@
   {
     "id": "mox-004",
     "name": "CHUPALINAS / Gold Shift",
+    "sourceUrl": "https://www.instagram.com/edicionesmox/p/Dbzeq8aAPmR/",
     "artist": "Ediciones Mox",
     "year": 2026,
     "material": "PLA pintado",
@@ -49,7 +61,7 @@
     "imageFile": "mox-004.webp",
     "description": "Variante dorada de CHUPALINAS impresa en PLA y pintada con degradado metalizado de oro a morado-vino. Aerógrafo multicapa. Orejas con degradado rojo-dorado. Tiraje especial.",
     "edition": "15",
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "mox-005",
@@ -195,16 +207,6 @@
     "status": "sold"
   },
   {
-    "id": "mox-016",
-    "name": "TAMALUCHI / Colaboración con Gabriela Sandoval",
-    "artist": "Ediciones Mox × Gabriela Sandoval",
-    "year": 2026,
-    "material": "Resina",
-    "imageFile": "mox-016.webp",
-    "description": "Pieza hecha con Gabriela Sandoval (@gabosanrex): una mascota virtual de los 90 convertida en figura. Edición en resina con textura granulada azul pastel, pantalla verde con dibujo, botones rosas y corazón en la parte de arriba.",
-    "status": "available"
-  },
-  {
     "id": "mox-017",
     "name": "DIABLITO SANJUDITAS",
     "artist": "Ediciones Mox",
@@ -216,5 +218,17 @@
     "status": "pre-order",
     "height": "10cm",
     "edition": "One-off · 1/1"
+  },
+  {
+    "id": "mox-018",
+    "name": "HEDOWTF / Clear + Blue Ink",
+    "artist": "Ediciones Mox",
+    "year": 2026,
+    "material": "Resina transparente",
+    "origin": "CDMX, México",
+    "imageFile": "mox-018.webp",
+    "description": "Kaiju en resina transparente con detalles azules. Un personaje que nace del smog, el drenaje y el agua estancada de la ciudad. Presentado en mayo de 2026.",
+    "edition": "Edición limitada",
+    "sourceUrl": "https://www.instagram.com/edicionesmox/p/DYu_1Zkg9k6/"
   }
 ]
