@@ -6,12 +6,12 @@ export type Specimen = {
   artist: string
   year: number
   material: string
-  height: string
-  origin: string
+  height?: string
+  origin?: string
   image: string
   description: string
-  edition: string
-  status: 'available' | 'sold' | 'pre-order'
+  edition?: string
+  status?: 'available' | 'sold' | 'pre-order'
 }
 
 type SpecimenJson = Omit<Specimen, 'image'> & { imageFile: string }
