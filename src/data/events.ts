@@ -24,7 +24,8 @@ export const galleryEvents: GalleryEvent[] = [
     dateLabel: '11–12 julio 2026',
     venue: 'Lerdo de Tejada 3, Col. Del Carmen',
     location: 'Coyoacán, Ciudad de México',
-    description: 'Bazar de arte, diseño y autopublicación. El taller anunció su participación en esta edición de julio.',
+    description:
+      'Bazar de arte, diseño y autopublicación. El taller anunció su participación en esta edición de julio.',
     poster: geometraPoster,
     sourceUrl: 'https://www.instagram.com/edicionesmox/p/DanQ0u4xUDC/',
   },
@@ -35,7 +36,8 @@ export const galleryEvents: GalleryEvent[] = [
     dateLabel: '09 julio 2026',
     venue: 'Hall West, Rijksakademie',
     location: 'Rijksakademie van Beeldende Kunsten',
-    description: 'Encuentro organizado por Biquini Wax EPS en torno a publicaciones, arte y economías colectivas. Ediciones Mox forma parte de la lista de participantes del cartel.',
+    description:
+      'Encuentro organizado por Biquini Wax EPS en torno a publicaciones, arte y economías colectivas. Ediciones Mox forma parte de la lista de participantes del cartel.',
     poster: bwookshopPoster,
     sourceUrl: 'https://www.instagram.com/biquiniwax_tv/p/DaacTdaNHyL/',
   },

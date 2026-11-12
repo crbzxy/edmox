@@ -7,8 +7,13 @@ const output = path.join(root, 'src/assets/optimized')
 await fs.mkdir(output, { recursive: true })
 const rows = []
 const manifest = {}
-const sources = ['hero.webp', ...(await fs.readdir(path.join(root, 'src/assets/specimens')))
-  .filter((name) => name.endsWith('.webp')).sort().map((name) => `specimens/${name}`)]
+const sources = [
+  'hero.webp',
+  ...(await fs.readdir(path.join(root, 'src/assets/specimens')))
+    .filter((name) => name.endsWith('.webp'))
+    .sort()
+    .map((name) => `specimens/${name}`),
+]
 
 // Originals are read only; every run generates variants from the same source.
 for (const relative of sources) {

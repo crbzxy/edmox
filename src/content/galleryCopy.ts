@@ -26,9 +26,12 @@ export const galleryCopy = {
   hero: {
     eyebrow: 'Juguetes de autor',
     title: 'Monstruos de aquí. Hechos a mano.',
-    description:
-      'Personajes propios, pintura a mano y tirajes cortos. Del taller en Coyoacán a tu colección.',
-    metaLine: (pieceCount: number) => [`${String(pieceCount).padStart(2, '0')} piezas en archivo`, 'Taller desde 2026', 'CDMX'],
+    description: 'Personajes propios, pintura a mano y tirajes cortos. Del taller en Coyoacán a tu colección.',
+    metaLine: (pieceCount: number) => [
+      `${String(pieceCount).padStart(2, '0')} piezas en archivo`,
+      'Taller desde 2026',
+      'CDMX',
+    ],
     archiveCta: 'Ver el archivo',
     featuredImageAlt: 'Vitrina con figuras de Ediciones Mox: CHUPALINAS, GOLDITOS y ZURASHI',
     featuredCaption: 'Vitrina, temporada 2026. CHUPALINAS, GOLDITOS y ZURASHI.',
@@ -49,7 +52,8 @@ export const galleryCopy = {
       'Hacemos esculturas de resina y personajes con impresión 3D, pintados a mano en tirajes cortos. El material y la edición cambian según la pieza; los indicamos en cada ficha.',
     /** Párrafo con cita: texto antes del enlace, enlace y texto después. */
     fauxfubi: {
-      before: 'Hacemos algo más parecido a un fauxfubi: figuras con espíritu de sofubi hechas por otros caminos. Tomamos la palabra de trabajos como ',
+      before:
+        'Hacemos algo más parecido a un fauxfubi: figuras con espíritu de sofubi hechas por otros caminos. Tomamos la palabra de trabajos como ',
       linkLabel: 'el de thecrafsman en Crafnation',
       href: 'https://crafnation.com/from-sketch-to-sculpt-to-soft-resin-fauxfubi-diy-sofubi-at-home/',
       after: ', que enseña a hacerlas en casa con resina suave; nosotros lo resolvemos con impresión 3D.',

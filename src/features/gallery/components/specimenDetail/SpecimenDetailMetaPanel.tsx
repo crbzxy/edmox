@@ -65,7 +65,12 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
         {title}
       </Typography>
       {variant && (
-        <Typography variant="h3" component="p" color="primary" sx={{ mt: 1, fontSize: { xs: '1.5rem', md: '1.75rem' } }}>
+        <Typography
+          variant="h3"
+          component="p"
+          color="primary"
+          sx={{ mt: 1, fontSize: { xs: '1.5rem', md: '1.75rem' } }}
+        >
           {variant}
         </Typography>
       )}
@@ -77,7 +82,19 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
       <SpecimenMetadataTable specimen={specimen} />
 
       {specimen.sourceUrl && (
-        <MuiLink href={specimen.sourceUrl} target="_blank" rel="noopener noreferrer" sx={{ display: 'inline-flex', mt: 3, minHeight: 44, alignItems: 'center', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+        <MuiLink
+          href={specimen.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            display: 'inline-flex',
+            mt: 3,
+            minHeight: 44,
+            alignItems: 'center',
+            textDecoration: 'underline',
+            textUnderlineOffset: '4px',
+          }}
+        >
           Ver publicación original ↗
         </MuiLink>
       )}

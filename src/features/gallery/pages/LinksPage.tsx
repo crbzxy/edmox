@@ -43,19 +43,35 @@ export default function LinksPage() {
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {links.groups.map((group) => (
                 <Box component="section" key={group.title}>
-                  <Typography variant="overline" component="h2" color="text.secondary" sx={{ display: 'block', mb: 1.5 }}>
+                  <Typography
+                    variant="overline"
+                    component="h2"
+                    color="text.secondary"
+                    sx={{ display: 'block', mb: 1.5 }}
+                  >
                     {group.title}
                   </Typography>
-                  <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, borderTop: '1.5px solid', borderColor: 'text.primary' }}>
+                  <Box
+                    component="ul"
+                    sx={{ listStyle: 'none', m: 0, p: 0, borderTop: '1.5px solid', borderColor: 'text.primary' }}
+                  >
                     {group.items.map((item) => (
-                      <Box component="li" key={item.href} sx={{ py: 2.5, borderBottom: '1px solid', borderColor: 'divider' }}>
+                      <Box
+                        component="li"
+                        key={item.href}
+                        sx={{ py: 2.5, borderBottom: '1px solid', borderColor: 'divider' }}
+                      >
                         <MuiLink
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
                           sx={{ color: 'text.primary', overflowWrap: 'anywhere', '&:hover': { color: 'primary.main' } }}
                         >
-                          <Typography variant="h3" component="span" sx={{ fontSize: { xs: '1.375rem', md: '1.625rem' } }}>
+                          <Typography
+                            variant="h3"
+                            component="span"
+                            sx={{ fontSize: { xs: '1.375rem', md: '1.625rem' } }}
+                          >
                             {item.name} ↗
                           </Typography>
                         </MuiLink>

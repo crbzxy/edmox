@@ -24,7 +24,7 @@ export default function NotFoundPage() {
       }}
     >
       <Box sx={{ textAlign: 'center', maxWidth: 400 }}>
-        <Typography variant="h1" sx={{ mb: 2, fontSize: { xs: "6rem", md: "9rem" }, color: "primary.main" }}>
+        <Typography variant="h1" sx={{ mb: 2, fontSize: { xs: '6rem', md: '9rem' }, color: 'primary.main' }}>
           {notFound.title}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
