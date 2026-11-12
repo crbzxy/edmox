@@ -11,7 +11,7 @@ import {
   splitSpecimenName,
 } from '@/services/specimens/catalog'
 import { galleryCopy } from '@/content/galleryCopy'
-import { brandPalette as colors } from '@/theme/appColorTokens'
+import { ui } from '@/theme/uiTokens'
 
 export function SpecimenCard({ specimen }: { specimen: Specimen }) {
   const { title, variant } = splitSpecimenName(specimen.name)
@@ -26,20 +26,20 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
         display: 'flex',
         flexDirection: 'column',
         minWidth: 0,
-        color: colors.ink,
+        color: ui.ink,
         textDecoration: 'none',
-        bgcolor: colors.paperRaised,
+        bgcolor: ui.surfaceRaised,
         border: '1px solid',
-        borderColor: colors.ink,
+        borderColor: ui.ink,
         transition: 'box-shadow 180ms, transform 180ms',
         '@media (hover: hover) and (prefers-reduced-motion: no-preference)': {
-          '&:hover': { transform: 'translate(-3px, -3px)', boxShadow: `6px 6px 0 ${colors.ink}` },
+          '&:hover': { transform: 'translate(-3px, -3px)', boxShadow: `6px 6px 0 ${ui.ink}` },
         },
-        '&:focus-visible': { outline: `3px solid ${colors.red}`, outlineOffset: 4 },
-        '&:hover .card-arrow': { bgcolor: colors.red, color: colors.white, borderColor: colors.red },
+        '&:focus-visible': { outline: `3px solid ${ui.accentText}`, outlineOffset: 4 },
+        '&:hover .card-arrow': { bgcolor: ui.accent, color: ui.onAccent, borderColor: ui.accent },
       }}
     >
-      <Box sx={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', bgcolor: colors.paper }}>
+      <Box sx={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', bgcolor: ui.surface }}>
         <ProtectedImage
           src={specimen.image}
           srcSet={specimen.imageSrcSet}
@@ -58,8 +58,8 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
               left: 16,
               px: 1.5,
               py: 0.75,
-              bgcolor: colors.red,
-              color: colors.white,
+              bgcolor: ui.accent,
+              color: ui.onAccent,
               transform: 'rotate(-3deg)',
             }}
           >
@@ -70,18 +70,18 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
       <Box
         sx={{
           p: { xs: 2.5, md: 3 },
-          borderTop: `1px solid ${colors.ink}`,
+          borderTop: `1px solid ${ui.ink}`,
           display: 'flex',
           flexDirection: 'column',
           flex: 1,
         }}
       >
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 1, mb: 2 }}>
-          <Typography variant="overline" sx={{ color: colors.inkSoft }}>
+          <Typography variant="overline" sx={{ color: ui.inkSoft }}>
             {formatCatalogNumber(specimen.id)}
           </Typography>
           {specimen.status && (
-            <Typography variant="overline" sx={{ color: specimen.status === 'sold' ? colors.inkSoft : colors.red }}>
+            <Typography variant="overline" sx={{ color: specimen.status === 'sold' ? ui.inkSoft : ui.accentText }}>
               {specimen.status !== 'sold' && '● '}
               {galleryCopy.specimenStatus[specimen.status]}
             </Typography>
@@ -91,14 +91,14 @@ export function SpecimenCard({ specimen }: { specimen: Specimen }) {
           {title}
         </Typography>
         {variant && (
-          <Typography variant="body2" sx={{ mt: 0.75, color: colors.inkSoft }}>
+          <Typography variant="body2" sx={{ mt: 0.75, color: ui.inkSoft }}>
             {variant}
           </Typography>
         )}
         <Box
           sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 2, mt: 'auto', pt: 3 }}
         >
-          <Typography variant="overline" sx={{ color: colors.inkSoft }}>
+          <Typography variant="overline" sx={{ color: ui.inkSoft }}>
             {facts.length ? facts.join(' · ') : specimen.material}
           </Typography>
           <Box

@@ -1,4 +1,4 @@
-import { createTheme, type PaletteMode } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import { appColorTokens, brandPalette } from './appColorTokens'
 
 export const bodyFontFamily = "'Archivo', system-ui, 'Segoe UI', sans-serif"
@@ -16,17 +16,16 @@ export const displayTypeSx = {
 
 const easing = 'cubic-bezier(0.2, 0, 0, 1)'
 
-function buildPalette(mode: PaletteMode) {
-  const colors = mode === 'light' ? appColorTokens.light : appColorTokens.dark
+function buildPalette(colors: (typeof appColorTokens)['light' | 'dark']) {
   return {
-    mode,
     primary: {
       main: colors.primaryMain,
       contrastText: brandPalette.white,
       light: brandPalette.redEmphasis,
-      dark: brandPalette.redMuted,
+      dark: colors.primaryDark,
     },
     secondary: { main: colors.secondaryMain, contrastText: colors.secondaryContrast },
+    accent: { text: colors.accentText },
     background: {
       default: colors.backgroundDefault,
       paper: colors.backgroundPaper,
@@ -39,9 +38,14 @@ function buildPalette(mode: PaletteMode) {
   }
 }
 
-export function createAppTheme(mode: PaletteMode) {
+export function createAppTheme() {
   return createTheme({
-    palette: buildPalette(mode),
+    // CSS variables + esquemas: el navegador elige claro/oscuro con `prefers-color-scheme`, sin re-render.
+    cssVariables: { colorSchemeSelector: 'media' },
+    colorSchemes: {
+      light: { palette: buildPalette(appColorTokens.light) },
+      dark: { palette: buildPalette(appColorTokens.dark) },
+    },
     typography: {
       fontFamily: bodyFontFamily,
       h1: displayTypeSx,
@@ -115,8 +119,8 @@ export function createAppTheme(mode: PaletteMode) {
       MuiAppBar: {
         styleOverrides: {
           root: ({ theme }) => ({
-            backgroundColor: theme.palette.background.default,
-            borderBottom: `1.5px solid ${theme.palette.text.primary}`,
+            backgroundColor: theme.vars.palette.background.default,
+            borderBottom: `1.5px solid ${theme.vars.palette.text.primary}`,
             boxShadow: 'none',
           }),
         },
@@ -124,3 +128,5 @@ export function createAppTheme(mode: PaletteMode) {
     },
   })
 }
+
+export const appTheme = createAppTheme()

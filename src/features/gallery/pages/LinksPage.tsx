@@ -65,7 +65,7 @@ export default function LinksPage() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          sx={{ color: 'text.primary', overflowWrap: 'anywhere', '&:hover': { color: 'primary.main' } }}
+                          sx={{ color: 'text.primary', overflowWrap: 'anywhere', '&:hover': { color: 'accent.text' } }}
                         >
                           <Typography
                             variant="h3"

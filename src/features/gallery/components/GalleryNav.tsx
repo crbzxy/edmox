@@ -11,7 +11,8 @@ import {
   SECTION_EVENTS_ID,
 } from '@/constants/gallery'
 import { appPaths, isGalleryArchivePath } from '@/constants/paths'
-import { brandPalette as colors, LOGO_CORNER_RADIUS_PX } from '@/theme/appColorTokens'
+import { LOGO_CORNER_RADIUS_PX } from '@/theme/appColorTokens'
+import { ui } from '@/theme/uiTokens'
 import { scrollGalleryAnchorIntoView } from '@/utils/scrollGalleryAnchor'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
@@ -95,8 +96,8 @@ export function GalleryNav() {
                     color: 'text.primary',
                     py: 1.5,
                     borderBottom: '2px solid',
-                    borderColor: link.active ? 'primary.main' : 'transparent',
-                    '&:hover': { borderColor: 'primary.main' },
+                    borderColor: link.active ? 'accent.text' : 'transparent',
+                    '&:hover': { borderColor: 'accent.text' },
                   }}
                 >
                   <Typography variant="overline">{link.label}</Typography>
@@ -151,11 +152,11 @@ export function GalleryNav() {
             sx: {
               width: { xs: '100%', sm: 440 },
               maxWidth: '100%',
-              bgcolor: colors.paper,
-              color: colors.ink,
+              bgcolor: ui.surface,
+              color: ui.ink,
               p: { xs: 3, sm: 4 },
               display: 'flex',
-              borderLeft: `1px solid ${colors.ink}`,
+              borderLeft: `1px solid ${ui.ink}`,
             },
           },
           transition: {
@@ -171,7 +172,7 @@ export function GalleryNav() {
             autoFocus
             onClick={close}
             aria-label="Cerrar menú de navegación"
-            sx={{ color: colors.ink, border: `1px solid ${colors.ink}`, minWidth: 44, px: 1.5 }}
+            sx={{ color: ui.ink, border: `1px solid ${ui.ink}`, minWidth: 44, px: 1.5 }}
           >
             Cerrar{' '}
             <Box component="span" aria-hidden="true" sx={{ ml: 1, fontSize: 24 }}>
@@ -181,7 +182,7 @@ export function GalleryNav() {
         </Box>
         <Typography variant="h2" sx={{ fontSize: '3.5rem', my: 3 }}>
           Explora
-          <Box component="span" sx={{ color: colors.red }}>
+          <Box component="span" sx={{ color: ui.accentText }}>
             {' '}
             Mox.
           </Box>
@@ -199,9 +200,9 @@ export function GalleryNav() {
                 alignItems: 'center',
                 gap: 2,
                 py: 3,
-                color: link.active ? colors.red : colors.ink,
-                borderTop: `1px solid ${colors.inkSoft}`,
-                '&:hover': { color: colors.red },
+                color: link.active ? ui.accentText : ui.ink,
+                borderTop: `1px solid ${ui.inkSoft}`,
+                '&:hover': { color: ui.accentText },
               }}
             >
               <Typography variant="overline">0{index + 1}</Typography>
@@ -219,7 +220,7 @@ export function GalleryNav() {
             rel="noopener noreferrer"
             onClick={close}
             fullWidth
-            sx={{ bgcolor: colors.red, color: colors.white, '&:hover': { bgcolor: colors.redMuted } }}
+            sx={{ bgcolor: ui.accent, color: ui.onAccent, '&:hover': { bgcolor: ui.accentHover } }}
           >
             Instagram ↗
           </Button>

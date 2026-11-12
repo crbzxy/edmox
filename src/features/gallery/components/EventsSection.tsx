@@ -1,7 +1,7 @@
 import { Box, Link, Typography } from '@mui/material'
 import { galleryEvents } from '@/data/events'
 import { SECTION_EVENTS_ID, SECTION_SCROLL_MARGIN } from '@/constants/gallery'
-import { brandPalette as colors } from '@/theme/appColorTokens'
+import { ui } from '@/theme/uiTokens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 
 export function EventsSection() {
@@ -10,21 +10,21 @@ export function EventsSection() {
       component="section"
       id={SECTION_EVENTS_ID}
       aria-labelledby="events-title"
-      sx={{ bgcolor: colors.paper, color: colors.ink, py: { xs: 7, md: 10 }, scrollMarginTop: SECTION_SCROLL_MARGIN }}
+      sx={{ bgcolor: ui.surface, color: ui.ink, py: { xs: 7, md: 10 }, scrollMarginTop: SECTION_SCROLL_MARGIN }}
     >
       <GalleryContentBounds>
         <Box
           sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'end', gap: 3, mb: 5 }}
         >
           <Box>
-            <Typography variant="overline" sx={{ display: 'block', color: colors.red, mb: 2 }}>
+            <Typography variant="overline" sx={{ display: 'block', color: ui.accentText, mb: 2 }}>
               Eventos / Archivo de participaciones
             </Typography>
             <Typography id="events-title" variant="h2" sx={{ fontSize: { xs: '3rem', md: '5rem' }, lineHeight: 0.98 }}>
               Fuera del taller<span aria-hidden="true"> ↗</span>
             </Typography>
           </Box>
-          <Typography variant="body2" sx={{ maxWidth: 320, color: colors.inkSoft }}>
+          <Typography variant="body2" sx={{ maxWidth: 320, color: ui.inkSoft }}>
             Bazares y encuentros donde las figuras comparten espacio con otras formas de hacer arte.
           </Typography>
         </Box>
@@ -40,13 +40,13 @@ export function EventsSection() {
               component="article"
               key={event.id}
               sx={{
-                border: `1px solid ${colors.ink}`,
-                bgcolor: colors.paperRaised,
+                border: `1px solid ${ui.ink}`,
+                bgcolor: ui.surfaceRaised,
                 display: 'flex',
                 flexDirection: 'column',
               }}
             >
-              <Box sx={{ p: { xs: 2, sm: 3 }, bgcolor: colors.paper, borderBottom: `1px solid ${colors.ink}` }}>
+              <Box sx={{ p: { xs: 2, sm: 3 }, bgcolor: ui.surface, borderBottom: `1px solid ${ui.ink}` }}>
                 <Box
                   component="img"
                   src={event.poster}
@@ -59,7 +59,7 @@ export function EventsSection() {
                 />
               </Box>
               <Box sx={{ p: 3, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <Typography variant="overline" sx={{ color: colors.red, mb: 2 }}>
+                <Typography variant="overline" sx={{ color: ui.accentText, mb: 2 }}>
                   <Box component="time" dateTime={event.startDate}>
                     {event.dateLabel}
                   </Box>
@@ -70,7 +70,7 @@ export function EventsSection() {
                 <Typography variant="body2" sx={{ fontWeight: 700 }}>
                   {event.venue}
                 </Typography>
-                <Typography variant="body2" sx={{ color: colors.inkSoft, mt: 0.5 }}>
+                <Typography variant="body2" sx={{ color: ui.inkSoft, mt: 0.5 }}>
                   {event.location}
                 </Typography>
                 <Typography variant="body2" sx={{ mt: 2, mb: 3 }}>
@@ -81,14 +81,14 @@ export function EventsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
-                    color: colors.ink,
+                    color: ui.ink,
                     mt: 'auto',
                     display: 'inline-flex',
                     alignItems: 'center',
                     minHeight: 44,
                     textDecoration: 'underline',
                     textUnderlineOffset: '4px',
-                    '&:hover': { color: colors.red },
+                    '&:hover': { color: ui.accentText },
                   }}
                 >
                   Ver publicación original ↗
