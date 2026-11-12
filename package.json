@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "validate:specimens": "node scripts/validate-specimens.mjs",
     "optimize:specimens": "node scripts/optimize-specimen-images.mjs",
-    "optimize:images": "node scripts/optimize-specimen-images.mjs",
+    "optimize:images": "node scripts/optimize-site-images.mjs",
     "export:logo-svg": "node scripts/export-edmox-sign-svg.mjs",
     "preview": "vite preview"
   },

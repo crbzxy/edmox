@@ -3,6 +3,8 @@ import type { SyntheticEvent } from 'react'
 
 type ProtectedImageProps = {
   src: string
+  srcSet?: string
+  sizes?: string
   alt: string
   loading?: 'eager' | 'lazy'
   imageSx?: BoxProps['sx']
@@ -13,7 +15,7 @@ function blockImageInteraction(event: SyntheticEvent) {
   event.preventDefault()
 }
 
-export function ProtectedImage({ src, alt, loading = 'lazy', imageSx, wrapperSx }: ProtectedImageProps) {
+export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imageSx, wrapperSx }: ProtectedImageProps) {
   return (
     <Box
       className="protected-image-root"
@@ -32,6 +34,9 @@ export function ProtectedImage({ src, alt, loading = 'lazy', imageSx, wrapperSx 
         component="img"
         className="protected-image-media"
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
+        decoding="async"
         alt={alt}
         loading={loading}
         draggable={false}

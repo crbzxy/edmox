@@ -1,0 +1,393 @@
+{
+  "hero": {
+    "originalBytes": 287812,
+    "width": 1920,
+    "height": 1444,
+    "variants": [
+      {
+        "file": "hero-640.avif",
+        "width": 640,
+        "bytes": 37262
+      },
+      {
+        "file": "hero-960.avif",
+        "width": 960,
+        "bytes": 70321
+      },
+      {
+        "file": "hero-1600.avif",
+        "width": 1600,
+        "bytes": 128483
+      }
+    ]
+  },
+  "mox-001": {
+    "originalBytes": 41250,
+    "width": 900,
+    "height": 677,
+    "variants": [
+      {
+        "file": "mox-001-400.webp",
+        "width": 400,
+        "bytes": 10674
+      },
+      {
+        "file": "mox-001-800.webp",
+        "width": 800,
+        "bytes": 27458
+      },
+      {
+        "file": "mox-001-900.webp",
+        "width": 900,
+        "bytes": 39502
+      }
+    ]
+  },
+  "mox-002": {
+    "originalBytes": 16430,
+    "width": 857,
+    "height": 493,
+    "variants": [
+      {
+        "file": "mox-002-400.webp",
+        "width": 400,
+        "bytes": 5534
+      },
+      {
+        "file": "mox-002-800.webp",
+        "width": 800,
+        "bytes": 12806
+      },
+      {
+        "file": "mox-002-857.webp",
+        "width": 857,
+        "bytes": 15784
+      }
+    ]
+  },
+  "mox-003": {
+    "originalBytes": 49088,
+    "width": 931,
+    "height": 922,
+    "variants": [
+      {
+        "file": "mox-003-400.avif",
+        "width": 400,
+        "bytes": 11745
+      },
+      {
+        "file": "mox-003-800.avif",
+        "width": 800,
+        "bytes": 29229
+      },
+      {
+        "file": "mox-003-931.avif",
+        "width": 931,
+        "bytes": 38621
+      }
+    ]
+  },
+  "mox-004": {
+    "originalBytes": 24354,
+    "width": 657,
+    "height": 517,
+    "variants": [
+      {
+        "file": "mox-004-400.avif",
+        "width": 400,
+        "bytes": 8860
+      },
+      {
+        "file": "mox-004-657.avif",
+        "width": 657,
+        "bytes": 19620
+      }
+    ]
+  },
+  "mox-005": {
+    "originalBytes": 115088,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-005-400.webp",
+        "width": 400,
+        "bytes": 10940
+      },
+      {
+        "file": "mox-005-800.avif",
+        "width": 800,
+        "bytes": 29377
+      },
+      {
+        "file": "mox-005-1400.avif",
+        "width": 1400,
+        "bytes": 92178
+      }
+    ]
+  },
+  "mox-006": {
+    "originalBytes": 49012,
+    "width": 1013,
+    "height": 759,
+    "variants": [
+      {
+        "file": "mox-006-400.avif",
+        "width": 400,
+        "bytes": 8357
+      },
+      {
+        "file": "mox-006-800.avif",
+        "width": 800,
+        "bytes": 23042
+      },
+      {
+        "file": "mox-006-1013.avif",
+        "width": 1013,
+        "bytes": 37500
+      }
+    ]
+  },
+  "mox-007": {
+    "originalBytes": 119130,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-007-400.avif",
+        "width": 400,
+        "bytes": 7500
+      },
+      {
+        "file": "mox-007-800.avif",
+        "width": 800,
+        "bytes": 25503
+      },
+      {
+        "file": "mox-007-1400.avif",
+        "width": 1400,
+        "bytes": 91864
+      }
+    ]
+  },
+  "mox-008": {
+    "originalBytes": 121918,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-008-400.avif",
+        "width": 400,
+        "bytes": 6946
+      },
+      {
+        "file": "mox-008-800.avif",
+        "width": 800,
+        "bytes": 25211
+      },
+      {
+        "file": "mox-008-1400.avif",
+        "width": 1400,
+        "bytes": 92493
+      }
+    ]
+  },
+  "mox-009": {
+    "originalBytes": 77804,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-009-400.webp",
+        "width": 400,
+        "bytes": 7550
+      },
+      {
+        "file": "mox-009-800.webp",
+        "width": 800,
+        "bytes": 21924
+      },
+      {
+        "file": "mox-009-1400.webp",
+        "width": 1400,
+        "bytes": 70776
+      }
+    ]
+  },
+  "mox-010": {
+    "originalBytes": 114846,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-010-400.avif",
+        "width": 400,
+        "bytes": 7151
+      },
+      {
+        "file": "mox-010-800.webp",
+        "width": 800,
+        "bytes": 28182
+      },
+      {
+        "file": "mox-010-1400.avif",
+        "width": 1400,
+        "bytes": 91376
+      }
+    ]
+  },
+  "mox-011": {
+    "originalBytes": 93438,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-011-400.avif",
+        "width": 400,
+        "bytes": 8629
+      },
+      {
+        "file": "mox-011-800.avif",
+        "width": 800,
+        "bytes": 25747
+      },
+      {
+        "file": "mox-011-1400.avif",
+        "width": 1400,
+        "bytes": 72910
+      }
+    ]
+  },
+  "mox-012": {
+    "originalBytes": 69072,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-012-400.avif",
+        "width": 400,
+        "bytes": 7287
+      },
+      {
+        "file": "mox-012-800.avif",
+        "width": 800,
+        "bytes": 20343
+      },
+      {
+        "file": "mox-012-1400.avif",
+        "width": 1400,
+        "bytes": 54459
+      }
+    ]
+  },
+  "mox-013": {
+    "originalBytes": 41050,
+    "width": 1365,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "mox-013-400.avif",
+        "width": 400,
+        "bytes": 6201
+      },
+      {
+        "file": "mox-013-800.webp",
+        "width": 800,
+        "bytes": 18154
+      },
+      {
+        "file": "mox-013-1365.webp",
+        "width": 1365,
+        "bytes": 39360
+      }
+    ]
+  },
+  "mox-014": {
+    "originalBytes": 45342,
+    "width": 1365,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "mox-014-400.avif",
+        "width": 400,
+        "bytes": 6475
+      },
+      {
+        "file": "mox-014-800.webp",
+        "width": 800,
+        "bytes": 18770
+      },
+      {
+        "file": "mox-014-1365.avif",
+        "width": 1365,
+        "bytes": 36497
+      }
+    ]
+  },
+  "mox-015": {
+    "originalBytes": 109040,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-015-400.webp",
+        "width": 400,
+        "bytes": 9364
+      },
+      {
+        "file": "mox-015-800.webp",
+        "width": 800,
+        "bytes": 26936
+      },
+      {
+        "file": "mox-015-1400.avif",
+        "width": 1400,
+        "bytes": 71228
+      }
+    ]
+  },
+  "mox-016": {
+    "originalBytes": 41694,
+    "width": 1200,
+    "height": 843,
+    "variants": [
+      {
+        "file": "mox-016-400.avif",
+        "width": 400,
+        "bytes": 6538
+      },
+      {
+        "file": "mox-016-800.avif",
+        "width": 800,
+        "bytes": 22739
+      },
+      {
+        "file": "mox-016-1200.webp",
+        "width": 1200,
+        "bytes": 41694
+      }
+    ]
+  },
+  "mox-017": {
+    "originalBytes": 74834,
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "file": "mox-017-400.avif",
+        "width": 400,
+        "bytes": 4742
+      },
+      {
+        "file": "mox-017-800.webp",
+        "width": 800,
+        "bytes": 18112
+      },
+      {
+        "file": "mox-017-1400.avif",
+        "width": 1400,
+        "bytes": 57811
+      }
+    ]
+  }
+}

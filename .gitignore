@@ -12,6 +12,7 @@ _ref-gallery
 dist
 dist-ssr
 *.local
+reports
 
 # Editor directories and files
 .vscode/*
