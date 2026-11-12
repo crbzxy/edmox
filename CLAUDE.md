@@ -5,14 +5,14 @@ Este archivo es el estándar del repo: aplica a personas y a agentes por igual.
 
 ## Comandos
 
-| Comando                      | Qué hace                                                                 |
-| ---------------------------- | ------------------------------------------------------------------------ |
-| `npm run dev`                | Servidor de desarrollo                                                   |
-| `npm run check`              | Lint + typecheck + validación del catálogo (correr antes de cada commit) |
-| `npm run build`              | Valida catálogo, genera sitemap/robots, typecheck y build de producción  |
-| `npm run format`             | Formatea con Prettier                                                    |
-| `npm run optimize:specimens` | Convierte fotos PNG/JPG de `src/assets/specimens/` a WebP                |
-| `npm run optimize:images`    | Genera variantes AVIF/WebP y `manifest.json` (hero, eventos y piezas)    |
+| Comando                      | Qué hace                                                                    |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| `npm run dev`                | Servidor de desarrollo                                                      |
+| `npm run check`              | Lint + typecheck + validación del catálogo (correr antes de cada commit)    |
+| `npm run build`              | Valida catálogo, typecheck, build y post-build SEO (prerender, OG, sitemap) |
+| `npm run format`             | Formatea con Prettier                                                       |
+| `npm run optimize:specimens` | Convierte fotos PNG/JPG de `src/assets/specimens/` a WebP                   |
+| `npm run optimize:images`    | Genera variantes AVIF/WebP y `manifest.json` (hero, eventos y piezas)       |
 
 CI (`.github/workflows/ci.yml`) corre formato, lint, typecheck, validación y build en cada PR. Node 24 (`.nvmrc`).
 
@@ -37,11 +37,11 @@ Alias de import: `@/` apunta a `src/`. Usarlo siempre en vez de rutas relativas 
 
 1. **Textos**: todo texto visible y todo `aria-label` vive en `src/content/galleryCopy.ts`. Nada de strings de UI dentro de los componentes.
 2. **Colores y modo oscuro**: el sitio sigue `prefers-color-scheme` vía CSS variables del tema. En componentes usar claves del tema (`text.primary`, `accent.text`, …) o `ui` de `src/theme/uiTokens.ts` dentro de strings (`1px solid ${ui.ink}`). `brandPalette` solo para superficies de marca que no cambian (hero, bloque Taller, footer). Texto de acento siempre con `accent.text`/`ui.accentText` (no `primary.main`, que no tiene contraste suficiente en oscuro). ESLint bloquea hex sueltos en `.tsx`.
-3. **Rutas**: solo vía `appPaths` (`src/constants/paths.ts`). Si se agrega una ruta, actualizar también `scripts/generate-seo-files.mjs`.
+3. **Rutas**: solo vía `appPaths` (`src/constants/paths.ts`). **Una ruta nueva debe agregarse a `pages` en `scripts/postbuild-seo.mjs`**: en producción, toda URL sin HTML prerenderizado responde 404 (`public/_redirects`).
 4. **Datos, no condicionales por id**: si una pieza o evento necesita un comportamiento distinto (etiqueta, tamaño, badge), se agrega un campo al dato. Nunca `if (specimen.id === 'mox-0XX')`.
 5. **Lógica del catálogo** (filtrar, formatear, ordenar) va en `src/services/specimens/catalog.ts` como funciones puras, no dentro de componentes.
 6. **Imágenes**: toda imagen de contenido pasa por el pipeline responsivo (`responsiveImage()`) con `width`/`height` y `sizes`. Las imágenes de piezas usan `ProtectedImage`.
-7. **SEO por página**: cada página llama a `usePageMeta` con título, descripción y `path`.
+7. **SEO por página**: los metadatos se construyen en `src/seo/pageMeta.ts` (una función por página) y cada página llama a `usePageMeta(...)` con ellos. El mismo módulo lo usa el prerender del build, así que cliente y HTML estático nunca difieren. `src/seo/pageMeta.ts` y lo que importa (`format.ts`, `galleryCopy.ts`, `site.ts`, `paths.ts`) los ejecuta Node: solo imports relativos con `.ts` o `import type`.
 8. **Accesibilidad**: `eslint-plugin-jsx-a11y` está activo. Objetivos táctiles de al menos 44px, `alt` descriptivo y animaciones condicionadas a `prefers-reduced-motion`.
 9. **Formato**: Prettier (`.prettierrc.json`) + `.editorconfig`. Finales de línea LF (`.gitattributes`).
 

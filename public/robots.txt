@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://edicionesmox.art/sitemap.xml
