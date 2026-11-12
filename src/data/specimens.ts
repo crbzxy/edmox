@@ -15,6 +15,8 @@ export type Specimen = {
   description: string
   edition?: string
   status?: 'available' | 'sold' | 'pre-order'
+  /** Pieza hecha con otra persona artista: muestra la insignia "Colaboración". */
+  collaboration?: boolean
 }
 
 type SpecimenJson = Omit<Specimen, 'image' | 'imageSrcSet'> & { imageFile: string }
@@ -33,4 +35,5 @@ export const specimens: Specimen[] = (specimensJson as SpecimenJson[]).map((item
   description: item.description,
   edition: item.edition,
   status: item.status,
+  collaboration: item.collaboration,
 }))

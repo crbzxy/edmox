@@ -9,6 +9,10 @@ const rows = []
 const manifest = {}
 const sources = [
   'hero.webp',
+  ...(await fs.readdir(path.join(root, 'src/assets/events')))
+    .filter((name) => name.endsWith('.webp'))
+    .sort()
+    .map((name) => `events/${name}`),
   ...(await fs.readdir(path.join(root, 'src/assets/specimens')))
     .filter((name) => name.endsWith('.webp'))
     .sort()
@@ -20,8 +24,10 @@ for (const relative of sources) {
   const source = path.join(root, 'src/assets', relative)
   const originalBytes = (await fs.stat(source)).size
   const metadata = await sharp(source).metadata()
-  const name = path.parse(relative).name
-  const widths = name === 'hero' ? [640, 960, 1600] : [400, 800, 1400]
+  // Los carteles de eventos llevan prefijo para no chocar con ids de piezas.
+  const name = relative.startsWith('events/') ? `event-${path.parse(relative).name}` : path.parse(relative).name
+  const isEvent = name.startsWith('event-')
+  const widths = name === 'hero' ? [640, 960, 1600] : isEvent ? [400, 800] : [400, 800, 1400]
   const variants = []
   for (const requested of widths) {
     const width = Math.min(requested, metadata.width)

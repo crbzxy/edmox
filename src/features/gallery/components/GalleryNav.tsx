@@ -82,7 +82,7 @@ export function GalleryNav() {
             </MuiLink>
             <Box
               component="nav"
-              aria-label="Navegación principal"
+              aria-label={nav.mainAriaLabel}
               sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 4 }}
             >
               {links.map((link) => (
@@ -114,7 +114,7 @@ export function GalleryNav() {
             </Box>
             <Button
               ref={menuButton}
-              aria-label="Abrir menú de navegación"
+              aria-label={nav.openMenuAriaLabel}
               aria-expanded={open}
               aria-controls={open ? 'mobile-navigation' : undefined}
               aria-haspopup="dialog"
@@ -130,7 +130,7 @@ export function GalleryNav() {
                 minHeight: 44,
               }}
             >
-              <Typography variant="overline">Menú</Typography>
+              <Typography variant="overline">{nav.menuLabel}</Typography>
               <Box aria-hidden="true" sx={{ display: 'grid', gap: '5px', width: 20 }}>
                 <Box sx={{ height: 2, bgcolor: 'currentColor' }} />
                 <Box sx={{ height: 2, bgcolor: 'currentColor' }} />
@@ -148,7 +148,7 @@ export function GalleryNav() {
             id: 'mobile-navigation',
             role: 'dialog',
             'aria-modal': true,
-            'aria-label': 'Menú de navegación',
+            'aria-label': nav.drawerAriaLabel,
             sx: {
               width: { xs: '100%', sm: 440 },
               maxWidth: '100%',
@@ -167,27 +167,27 @@ export function GalleryNav() {
         }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2, pb: 4 }}>
-          <Typography variant="overline">Ediciones Mox / Menú</Typography>
+          <Typography variant="overline">{nav.drawerEyebrow}</Typography>
           <Button
             autoFocus
             onClick={close}
-            aria-label="Cerrar menú de navegación"
+            aria-label={nav.closeMenuAriaLabel}
             sx={{ color: ui.ink, border: `1px solid ${ui.ink}`, minWidth: 44, px: 1.5 }}
           >
-            Cerrar{' '}
+            {nav.closeMenuLabel}{' '}
             <Box component="span" aria-hidden="true" sx={{ ml: 1, fontSize: 24 }}>
               ×
             </Box>
           </Button>
         </Box>
         <Typography variant="h2" sx={{ fontSize: '3.5rem', my: 3 }}>
-          Explora
+          {nav.drawerTitle}
           <Box component="span" sx={{ color: ui.accentText }}>
             {' '}
-            Mox.
+            {nav.drawerTitleAccent}
           </Box>
         </Typography>
-        <Box component="nav" aria-label="Navegación móvil y tablet" sx={{ mt: 2 }}>
+        <Box component="nav" aria-label={nav.mobileNavAriaLabel} sx={{ mt: 2 }}>
           {links.map((link, index) => (
             <MuiLink
               key={link.label}
