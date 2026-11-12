@@ -10,6 +10,7 @@ const brandShortName = 'Ediciones Mox'
 export const galleryCopy = {
   brand: {
     shortName: brandShortName,
+    instagramHandle: '@edicionesmox',
     /** Alt del logo en pie u otros usos con texto. */
     logoAlt: brandShortName,
     homeLinkAriaLabel: `${brandShortName} — inicio`,
@@ -17,73 +18,71 @@ export const galleryCopy = {
 
   nav: {
     archive: 'Archivo',
-    about: 'Sobre',
+    about: 'Taller',
+    instagram: 'Instagram',
   },
 
   hero: {
-    eyebrow: 'Archivo de soft vinyl',
-    titleLine1: 'Ediciones',
-    titleAccent: 'Mox',
+    title: 'Monstruos de aquí, impresos y pintados a mano en Coyoacán',
     description:
-      'Una colección curada de figuras japonesas de soft vinyl (sofubi). Cada pieza documentada con precisión de archivo — desde kaijus GID hasta ediciones limitadas pintadas a mano.',
-    scrollHint: 'Desplázate para explorar',
-    featuredOverline: 'Colección destacada',
-    featuredCaption: 'Vitrinas de la galería — Temporada 2026',
-    featuredImageAlt: 'Vitrina de piezas Ediciones Mox — kaiju y art toys en exhibición',
+      'Diseñamos cada personaje, lo imprimimos en PLA y lo pintamos a pincel y aerógrafo. Salen de lo que tenemos cerca, como el Judas de cartonería o la mascota virtual de los 90. Tirajes cortos y numerados.',
+    metaLine: (pieceCount: number) => [`${String(pieceCount).padStart(2, '0')} piezas en archivo`, 'Taller desde 2026', 'CDMX'],
+    archiveCta: 'Ver el archivo',
+    featuredImageAlt: 'Vitrina con figuras de Ediciones Mox: CHUPALINAS, GOLDITOS y ZURASHI',
+    featuredCaption: 'Vitrina, temporada 2026. CHUPALINAS, GOLDITOS y ZURASHI.',
   },
 
   archive: {
-    sectionTitle: 'La colección',
-    filterGroupAriaLabel: 'Filtrar por material',
-    sectionOverline: (pieceCount: number) => `Archivo — ${pieceCount} piezas`,
+    sectionTitle: 'Archivo',
+    filterGroupAriaLabel: 'Filtrar por estado',
+    countLabel: (pieceCount: number) => `${String(pieceCount).padStart(2, '0')} piezas`,
+    loadMore: 'Mostrar más piezas',
+    empty: 'No hay piezas con este estado por ahora.',
   },
 
   about: {
-    overline: 'Sobre nosotros',
-    titleLine1: 'La galería virtual',
-    titleLine2Before: 'de ',
-    titleAccent: 'sofubi',
-    paragraph1: `${brandShortName} nace en Coyoacán, CDMX, de la pasión por el kaiju y el art toy independiente — escultura, impresión 3D en PLA y acabado pintado a mano con estética sofubi.`,
+    sectionTitle: 'El taller',
+    paragraph1: `${brandShortName} es un taller chico en Coyoacán, CDMX, que empezó en 2026. Hacemos personajes propios y, de vez en cuando, piezas en colaboración con otros artistas; cuando es así, lo decimos.`,
     paragraph2:
-      'Fundada en 2026, documentamos y compartimos cada edición limitada desde nuestro taller en la Ciudad de México. Cada pieza del archivo es diseño propio, producción artesanal y tirajes numerados.',
-    stats: [
-      { value: '0', label: 'Piezas documentadas' },
-      { value: 'Coyoacán', label: 'Sede del taller' },
-      { value: 'CDMX', label: 'Ciudad de origen' },
-      { value: '2026', label: 'Año de fundación' },
-    ] as const,
-    valuesTitle: 'Nuestros valores',
-    values: [
-      {
-        title: 'Autenticidad',
-        description: 'Solo piezas verificadas y originales de fabricantes autorizados.',
-      },
-      {
-        title: 'Preservación',
-        description: 'Documentación fotográfica y técnica de nivel archivístico.',
-      },
-      {
-        title: 'Comunidad',
-        description: 'Conectamos coleccionistas con artistas y estudios independientes.',
-      },
+      'No hacemos sofubi. El sofubi es vinil suave vaciado en moldes de metal, y le tenemos respeto a ese oficio. Lo nuestro sale de una impresora 3D y se pinta a mano, una pieza a la vez; por eso los tirajes son cortos y cada figura va numerada.',
+    /** Párrafo con cita: texto antes del enlace, enlace y texto después. */
+    fauxfubi: {
+      before: 'Hacemos algo más parecido a un fauxfubi: figuras con espíritu de sofubi hechas por otros caminos. Tomamos la palabra de trabajos como ',
+      linkLabel: 'el de thecrafsman en Crafnation',
+      href: 'https://crafnation.com/from-sketch-to-sculpt-to-soft-resin-fauxfubi-diy-sofubi-at-home/',
+      after: ', que enseña a hacerlas en casa con resina suave; nosotros lo resolvemos con impresión 3D.',
+    },
+    linksCta: 'Sitios de interés',
+    processTitle: 'Cómo se hace una pieza',
+    process: [
+      { title: 'Escultura', description: 'Diseñamos y esculpimos el personaje en el taller.' },
+      { title: 'Impresión', description: 'Se imprime en PLA; alas y piezas sueltas por separado.' },
+      { title: 'Pintura', description: 'Base a pincel y degradados con aerógrafo, en varias capas.' },
+      { title: 'Numerado', description: 'Cada tiraje se cierra al llegar a su número de piezas.' },
     ] as const,
   },
 
   footer: {
-    instagramCta: 'Escríbenos en Instagram →',
-    copyrightLine: (year: number) => `© ${year} ${brandShortName}. Todos los derechos reservados.`,
+    ctaTitle: '¿Te interesa una pieza?',
+    ctaBody: 'Preventas, disponibilidad y envíos los vemos por mensaje directo.',
+    instagramCta: 'Escríbenos en Instagram',
+    location: 'Coyoacán, Ciudad de México',
+    copyrightLine: (year: number) => `© ${year} ${brandShortName}`,
   },
 
   specimenDetail: {
-    backToArchive: 'Volver al archivo',
+    backToArchive: 'Archivo',
     backArrow: '←',
     notFoundMessage: 'No encontramos esta pieza en el archivo.',
-    pieceIdOverline: (specimenId: string) => `Pieza ${specimenId.toUpperCase()}`,
-    inquireCta: 'Consultar en Instagram →',
+    inquireCta: 'Preguntar por esta pieza',
+    soldNote: 'Tiraje agotado. Síguenos en Instagram para enterarte de la siguiente edición.',
+    previous: 'Anterior',
+    next: 'Siguiente',
     metaLabels: {
+      artist: 'Autoría',
       material: 'Material',
       height: 'Altura',
-      origin: 'Origen',
+      origin: 'Hecho en',
       year: 'Año',
       edition: 'Edición',
       status: 'Estado',
@@ -92,23 +91,85 @@ export const galleryCopy = {
 
   specimenStatus: {
     available: 'Disponible',
-    sold: 'Vendido',
+    sold: 'Agotado',
     'pre-order': 'Preventa',
-  } satisfies Record<Specimen['status'], string>,
+  } satisfies Record<NonNullable<Specimen['status']>, string>,
+
+  links: {
+    pageTitle: 'Sitios de interés',
+    intro:
+      'Lecturas, talleres y gente que nos ha enseñado algo sobre juguetes de autor, sofubi y lo que hacemos por aquí. No tenemos relación comercial con ninguno, salvo donde se dice.',
+    metaDescription:
+      'Enlaces que recomienda Ediciones Mox sobre fauxfubi, historia del sofubi y el art toy, cultura popular mexicana y artistas con los que colaboramos.',
+    groups: [
+      {
+        title: 'Fauxfubi y técnica',
+        items: [
+          {
+            name: 'From Sketch to Sculpt to Soft Resin (Fauxfubi — DIY Sofubi at home)',
+            source: 'Crafnation · thecrafsman · 3 de marzo de 2024',
+            href: 'https://crafnation.com/from-sketch-to-sculpt-to-soft-resin-fauxfubi-diy-sofubi-at-home/',
+            note: 'Cómo hacer figuras estilo sofubi en casa: escultura, resina suave rotomoldeada y pintura. De aquí tomamos la palabra fauxfubi.',
+          },
+        ],
+      },
+      {
+        title: 'Historia del sofubi y el art toy',
+        items: [
+          {
+            name: 'Max Toy Company',
+            source: 'maxtoyco.com',
+            href: 'https://www.maxtoyco.com/',
+            note: 'Estudio de Mark Nagata en San Francisco (2005–2026): kaiju de sofubi hechos en talleres japoneses, pintados a mano y en tirajes cortos.',
+          },
+          {
+            name: 'Kaiju vs Heroes: Mark Nagata’s Journey through the World of Japanese Toys',
+            source: 'Japanese American National Museum',
+            href: 'https://janm.org/exhibits/kaiju-vs-heroes/artist',
+            note: 'La exposición que llevó el juguete kaiju a un museo y lo leyó como memoria e identidad.',
+          },
+        ],
+      },
+      {
+        title: 'Cultura popular mexicana',
+        items: [
+          {
+            name: 'Judas con forma de diablo',
+            source: 'México Desconocido',
+            href: 'https://www.mexicodesconocido.com.mx/judas-con-forma-de-diablo.html',
+            note: 'La tradición de cartonería de la que sale nuestro Diablito Sanjuditas.',
+          },
+        ],
+      },
+      {
+        title: 'Colaboraciones',
+        items: [
+          {
+            name: 'Gabriela Sandoval (@gabosanrex)',
+            source: 'Instagram',
+            href: 'https://www.instagram.com/gabosanrex/',
+            note: 'Artista con quien hicimos Tamaluchi.',
+          },
+        ],
+      },
+    ],
+  },
 
   notFound: {
     title: '404',
-    description: 'No encontramos la página que buscas.',
+    description: 'Esta página no existe, o se movió de vitrina.',
     cta: 'Volver al inicio',
   },
 } as const
 
-/** Valores de filtro = `specimen.material` salvo `All`. La etiqueta es lo que ve el usuario. */
-export const archiveMaterialFilterOptions = [
-  { value: 'All', label: 'Todos' },
-  { value: 'PLA pintado', label: 'PLA pintado' },
-] as const
+export type ArchiveStatusFilter = 'all' | NonNullable<Specimen['status']>
 
-export type ArchiveMaterialFilter = (typeof archiveMaterialFilterOptions)[number]['value']
+/** Orden y etiquetas del filtro del archivo. */
+export const archiveStatusFilterOptions: { value: ArchiveStatusFilter; label: string }[] = [
+  { value: 'all', label: 'Todo' },
+  { value: 'available', label: galleryCopy.specimenStatus.available },
+  { value: 'pre-order', label: galleryCopy.specimenStatus['pre-order'] },
+  { value: 'sold', label: galleryCopy.specimenStatus.sold },
+]
 
-export const defaultArchiveMaterialFilter: ArchiveMaterialFilter = 'All'
+export const defaultArchiveStatusFilter: ArchiveStatusFilter = 'all'

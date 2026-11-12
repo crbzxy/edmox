@@ -5,4 +5,5 @@ export const GALLERY_INSTAGRAM_URL = 'https://www.instagram.com/edicionesmox/?hl
 export const SECTION_ARCHIVE_ID = 'archive'
 export const SECTION_ABOUT_ID = 'about'
 
-export const GRID_COLUMN_SPANS = [7, 5, 4, 4, 4, 5, 7, 5] as const
+/** Compensa la barra fija al saltar a una sección. */
+export const SECTION_SCROLL_MARGIN = { xs: '80px', sm: '88px' } as const
