@@ -27,3 +27,14 @@ reports
 
 # Material fuente sin procesar (capturas, originales)
 originals
+
+# Secretos y configuración local (nunca al repo público)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Configuración local de editores/agentes
+.cursor/
+.claude/settings.local.json

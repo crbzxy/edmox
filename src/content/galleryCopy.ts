@@ -11,8 +11,6 @@ export const galleryCopy = {
   brand: {
     shortName: brandShortName,
     instagramHandle: '@edicionesmox',
-    /** Alt del logo en pie u otros usos con texto. */
-    logoAlt: brandShortName,
     homeLinkAriaLabel: `${brandShortName} — inicio`,
   },
 
@@ -44,11 +42,9 @@ export const galleryCopy = {
     ],
     archiveCta: 'Ver el archivo',
     featuredImageAlt: 'Vitrina con figuras de Ediciones Mox: CHUPALINAS, GOLDITOS y ZURASHI',
-    featuredCaption: 'Vitrina, temporada 2026. CHUPALINAS, GOLDITOS y ZURASHI.',
   },
 
   archive: {
-    sectionTitle: 'Archivo',
     eyebrow: `${brandShortName} / Catálogo 2026`,
     eyebrowPlace: 'Coyoacán, CDMX ↗',
     kicker: 'Tirajes cortos. Personajes propios.',
@@ -64,7 +60,6 @@ export const galleryCopy = {
   },
 
   about: {
-    sectionTitle: 'El taller',
     eyebrow: 'Detrás de las figuras / El taller',
     title: 'De aquí.',
     titleAccent: 'A tu vitrina.',
