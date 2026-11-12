@@ -3,19 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run validate:specimens && tsc -b && vite build && node scripts/postbuild-seo.mjs",
     "lint": "eslint .",
+    "typecheck": "tsc -b",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run typecheck && npm run validate:specimens",
     "validate:specimens": "node scripts/validate-specimens.mjs",
     "optimize:specimens": "node scripts/optimize-specimen-images.mjs",
-    "optimize:images": "node scripts/optimize-specimen-images.mjs",
+    "optimize:images": "node scripts/optimize-site-images.mjs",
     "export:logo-svg": "node scripts/export-edmox-sign-svg.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
     "@mui/material": "^6.4.12",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -28,12 +37,19 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.0",
     "eslint": "^9.39.4",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
-    "sharp": "^0.34.5",
+    "prettier": "^3.10.0",
+    "sharp": "^0.35.5",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.0"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    }
   }
 }

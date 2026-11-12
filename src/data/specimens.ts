@@ -1,4 +1,5 @@
 import specimensJson from '@/data/specimens.json'
+import { responsiveImage } from '@/data/responsiveImages'
 
 export type Specimen = {
   id: string
@@ -6,42 +7,33 @@ export type Specimen = {
   artist: string
   year: number
   material: string
-  height: string
-  origin: string
+  height?: string
+  origin?: string
   image: string
+  imageSrcSet: string
+  sourceUrl?: string
   description: string
-  edition: string
-  status: 'available' | 'sold' | 'pre-order'
+  edition?: string
+  status?: 'available' | 'sold' | 'pre-order'
+  /** Pieza hecha con otra persona artista: muestra la insignia "Colaboración". */
+  collaboration?: boolean
 }
 
-type SpecimenJson = Omit<Specimen, 'image'> & { imageFile: string }
-
-type GlobbedImage = string | { default: string }
-
-const specimenImageModules = import.meta.glob('@/assets/specimens/*.webp', {
-  eager: true,
-  query: '?url',
-}) as Record<string, GlobbedImage>
-
-function resolveSpecimenImageUrl(imageFile: string): string {
-  const key = Object.keys(specimenImageModules).find((path) => path.endsWith(`/specimens/${imageFile}`))
-  if (!key) throw new Error(`Imagen no encontrada en assets/specimens: ${imageFile}`)
-
-  const moduleValue = specimenImageModules[key]
-  if (typeof moduleValue === 'string') return moduleValue
-  return moduleValue.default
-}
+type SpecimenJson = Omit<Specimen, 'image' | 'imageSrcSet'> & { imageFile: string }
 
 export const specimens: Specimen[] = (specimensJson as SpecimenJson[]).map((item) => ({
   id: item.id,
   name: item.name,
   artist: item.artist,
+  sourceUrl: item.sourceUrl,
   year: item.year,
   material: item.material,
   height: item.height,
   origin: item.origin,
-  image: resolveSpecimenImageUrl(item.imageFile),
+  image: responsiveImage(item.imageFile.replace(/\.webp$/, '')).src,
+  imageSrcSet: responsiveImage(item.imageFile.replace(/\.webp$/, '')).srcSet,
   description: item.description,
   edition: item.edition,
   status: item.status,
+  collaboration: item.collaboration,
 }))

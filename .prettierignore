@@ -1,0 +1,7 @@
+dist
+node_modules
+_ref-gallery
+reports
+originals
+package-lock.json
+src/assets/optimized/manifest.json

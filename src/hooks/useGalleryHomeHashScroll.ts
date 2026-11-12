@@ -8,7 +8,7 @@ import { scrollGalleryAnchorIntoView } from '@/utils/scrollGalleryAnchor'
  * En la home, al entrar o cambiar el hash, desplaza al elemento con ese id.
  */
 export function useGalleryHomeHashScroll() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
 
   useLayoutEffect(() => {
     if (pathname !== appPaths.home) return
@@ -21,5 +21,5 @@ export function useGalleryHomeHashScroll() {
     }
     if (!elementId) return
     scrollGalleryAnchorIntoView(elementId)
-  }, [pathname, hash])
+  }, [pathname, hash, key])
 }

@@ -13,7 +13,7 @@ export function GalleryContentBounds({ sx, ...props }: BoxProps) {
           maxWidth: GALLERY_MAX_CONTENT_WIDTH_PX,
           mx: 'auto',
           boxSizing: 'border-box',
-          px: { xs: 2, sm: 3 },
+          px: { xs: 3, sm: 4, lg: 6 },
         },
         ...(Array.isArray(sx) ? sx : sx != null ? [sx] : []),
       ]}

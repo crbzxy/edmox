@@ -1,6 +1,11 @@
 /**
  * Paleta derivada del logo Ediciones Mox (banda rojo carmesí + negro + tipografía blanca).
- * Valores tomados del PNG de marca; no usar hex sueltos en componentes.
+ * El fondo claro imita papel de catálogo impreso; no usar hex sueltos en componentes.
+ *
+ * - `brandPalette`: colores fijos de marca. Solo para superficies que se ven igual en ambos modos
+ *   (hero, bloque "Taller", footer).
+ * - `appColorTokens`: valores por esquema (claro/oscuro) que alimentan el tema MUI.
+ * - En componentes que siguen al sistema, usar `ui` (src/theme/uiTokens.ts) o claves del tema (`text.primary`).
  */
 /** Radio visual del logo PNG (esquinas redondeadas). */
 export const LOGO_CORNER_RADIUS_PX = 12
@@ -9,41 +14,45 @@ export const brandPalette = {
   red: '#A62C2D',
   redMuted: '#8B2425',
   redEmphasis: '#C43E3F',
+  /** Rojo claro para texto de acento sobre fondos oscuros (contraste ≥ 4.5:1 sobre `night`). */
+  redOnDark: '#E5625F',
   black: '#000000',
-  ink: '#0A0A0A',
-  inkElevated: '#141414',
   white: '#FFFFFF',
-  fog: '#F5F4F4',
-  mist: '#E8E6E6',
-  slate: '#6B6565',
-  graphite: '#2A2828',
+  paper: '#EFECE6',
+  paperRaised: '#F7F5F1',
+  ink: '#161414',
+  inkSoft: '#5E5856',
+  night: '#0E0D0D',
+  nightRaised: '#191717',
+  bone: '#F1EEE9',
 } as const
 
 export const appColorTokens = {
   light: {
-    backgroundDefault: brandPalette.fog,
-    backgroundPaper: brandPalette.white,
-    textPrimary: brandPalette.graphite,
-    textSecondary: brandPalette.slate,
-    divider: brandPalette.mist,
+    backgroundDefault: brandPalette.paper,
+    backgroundPaper: brandPalette.paperRaised,
+    textPrimary: brandPalette.ink,
+    textSecondary: brandPalette.inkSoft,
+    divider: 'rgba(22, 20, 20, 0.16)',
     primaryMain: brandPalette.red,
-    secondaryMain: brandPalette.mist,
-    secondaryContrast: brandPalette.graphite,
-    focusRing: brandPalette.red,
-    vitrineGlass: 'rgba(166, 44, 45, 0.06)',
-    vitrineBorder: 'rgba(42, 40, 40, 0.12)',
+    primaryDark: brandPalette.redMuted,
+    accentText: brandPalette.red,
+    secondaryMain: '#E2DED7',
+    secondaryContrast: brandPalette.ink,
+    themeColor: brandPalette.red,
   },
   dark: {
-    backgroundDefault: brandPalette.ink,
-    backgroundPaper: brandPalette.inkElevated,
-    textPrimary: brandPalette.white,
-    textSecondary: 'rgba(255, 255, 255, 0.62)',
-    divider: 'rgba(255, 255, 255, 0.1)',
+    backgroundDefault: brandPalette.night,
+    backgroundPaper: brandPalette.nightRaised,
+    textPrimary: brandPalette.bone,
+    textSecondary: 'rgba(241, 238, 233, 0.68)',
+    divider: 'rgba(241, 238, 233, 0.14)',
+    // Fondos de botón/insignia: el rojo de marca mantiene contraste con texto blanco en ambos modos.
     primaryMain: brandPalette.red,
-    secondaryMain: '#1C1C1C',
-    secondaryContrast: brandPalette.white,
-    focusRing: brandPalette.redEmphasis,
-    vitrineGlass: 'rgba(255, 255, 255, 0.04)',
-    vitrineBorder: 'rgba(255, 255, 255, 0.12)',
+    primaryDark: brandPalette.redMuted,
+    accentText: brandPalette.redOnDark,
+    secondaryMain: '#1F1C1C',
+    secondaryContrast: brandPalette.bone,
+    themeColor: brandPalette.night,
   },
 } as const
