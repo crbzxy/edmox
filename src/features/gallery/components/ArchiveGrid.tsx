@@ -8,7 +8,7 @@ import {
 } from '@/content/galleryCopy'
 import { SECTION_ARCHIVE_ID, SECTION_SCROLL_MARGIN } from '@/constants/gallery'
 import { countSpecimensByStatusFilter, getSpecimensByStatusFilter } from '@/services/specimens/catalog'
-import { brandPalette as colors } from '@/theme/appColorTokens'
+import { ui } from '@/theme/uiTokens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 import { SpecimenCard } from './SpecimenCard'
 
@@ -26,8 +26,8 @@ export function ArchiveGrid() {
       id={SECTION_ARCHIVE_ID}
       aria-labelledby="archive-title"
       sx={{
-        bgcolor: colors.paper,
-        color: colors.ink,
+        bgcolor: ui.surface,
+        color: ui.ink,
         py: { xs: 7, md: 11 },
         scrollMarginTop: SECTION_SCROLL_MARGIN,
       }}
@@ -40,7 +40,7 @@ export function ArchiveGrid() {
             gap: 3,
             mb: 4,
             pb: 2,
-            borderBottom: `1px solid ${colors.ink}`,
+            borderBottom: `1px solid ${ui.ink}`,
           }}
         >
           <Typography variant="overline">Ediciones Mox / Catálogo 2026</Typography>
@@ -58,7 +58,7 @@ export function ArchiveGrid() {
           }}
         >
           <Box>
-            <Typography variant="overline" sx={{ color: colors.red, display: 'block', mb: 2 }}>
+            <Typography variant="overline" sx={{ color: ui.accentText, display: 'block', mb: 2 }}>
               Tirajes cortos. Personajes propios.
             </Typography>
             <Typography
@@ -67,12 +67,12 @@ export function ArchiveGrid() {
               sx={{ fontSize: { xs: '3.5rem', sm: '5rem', md: '6.5rem' }, lineHeight: 0.94 }}
             >
               Fuera de
-              <Box component="span" sx={{ display: 'block', color: colors.red }}>
+              <Box component="span" sx={{ display: 'block', color: ui.accentText }}>
                 serie<span aria-hidden="true"> ✳</span>
               </Box>
             </Typography>
           </Box>
-          <Typography variant="body1" sx={{ maxWidth: 360, color: colors.inkSoft }}>
+          <Typography variant="body1" sx={{ maxWidth: 360, color: ui.inkSoft }}>
             El archivo de nuestros monstruos. Explora las piezas, sus variantes y las colaboraciones que salen del
             taller.
           </Typography>
@@ -107,10 +107,10 @@ export function ArchiveGrid() {
                   sx={{
                     minHeight: 44,
                     px: 2,
-                    border: `1px solid ${selected ? colors.ink : colors.inkSoft}`,
-                    bgcolor: selected ? colors.ink : 'transparent',
-                    color: selected ? colors.paper : colors.ink,
-                    '&:hover': { bgcolor: selected ? colors.ink : colors.paperRaised },
+                    border: `1px solid ${selected ? ui.ink : ui.inkSoft}`,
+                    bgcolor: selected ? ui.ink : 'transparent',
+                    color: selected ? ui.surface : ui.ink,
+                    '&:hover': { bgcolor: selected ? ui.ink : ui.surfaceRaised },
                     '&.Mui-disabled': { opacity: 0.4 },
                   }}
                 >
@@ -148,10 +148,10 @@ export function ArchiveGrid() {
               onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
               variant="outlined"
               sx={{
-                color: colors.ink,
-                borderColor: colors.ink,
+                color: ui.ink,
+                borderColor: ui.ink,
                 px: 5,
-                '&:hover': { borderColor: colors.ink, bgcolor: colors.paperRaised },
+                '&:hover': { borderColor: ui.ink, bgcolor: ui.surfaceRaised },
               }}
             >
               {archive.loadMore} +

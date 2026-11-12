@@ -1,19 +1,15 @@
-import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material'
-import { useMemo, type ReactNode } from 'react'
-import { createAppTheme } from './createAppTheme'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import type { ReactNode } from 'react'
+import { appTheme } from './createAppTheme'
 
 type AppThemeProviderProps = {
   children: ReactNode
 }
 
+/** El esquema claro/oscuro lo resuelve CSS (`prefers-color-scheme`) vía las variables del tema: sin re-render ni parpadeo. */
 export function AppThemeProvider({ children }: AppThemeProviderProps) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {
-    defaultMatches: false,
-  })
-  const theme = useMemo(() => createAppTheme(prefersDarkMode ? 'dark' : 'light'), [prefersDarkMode])
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <CssBaseline enableColorScheme />
       {children}
     </ThemeProvider>

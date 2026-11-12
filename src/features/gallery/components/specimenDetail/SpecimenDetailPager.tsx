@@ -18,7 +18,7 @@ function PagerLink({ specimen, label, align }: { specimen: Specimen; label: stri
         color: 'inherit',
         textDecoration: 'none',
         gridColumn: align === 'right' ? 2 : 1,
-        '&:hover .pager-title': { color: 'primary.main' },
+        '&:hover .pager-title': { color: 'accent.text' },
       }}
     >
       <Typography variant="overline" color="text.secondary" sx={{ display: 'block' }}>

@@ -10,9 +10,9 @@ export function SpecimenStatusTag({ status }: { status: Specimen['status'] }) {
 
   const swatchSx =
     status === 'available'
-      ? { bgcolor: 'primary.main' }
+      ? { bgcolor: 'accent.text' }
       : status === 'pre-order'
-        ? { border: '1.5px solid', borderColor: 'primary.main' }
+        ? { border: '1.5px solid', borderColor: 'accent.text' }
         : { border: '1.5px solid', borderColor: 'text.secondary' }
 
   return (
