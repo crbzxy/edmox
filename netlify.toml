@@ -9,8 +9,10 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # Only scripts from this origin. Inline styles are needed by MUI/Emotion. Fonts are self-hosted (@fontsource).
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    # Scripts: this origin + Google Tag Manager / GA4 (loaded from src/analytics/gtm.ts, no inline scripts).
+    # Inline styles are needed by MUI/Emotion. Fonts are self-hosted (@fontsource).
+    # Adding another vendor through GTM requires allowing its domains here.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
