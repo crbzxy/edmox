@@ -47,8 +47,8 @@ export function createAppTheme(mode: PaletteMode) {
       h1: displayTypeSx,
       h2: displayTypeSx,
       h3: { fontFamily: bodyFontFamily, fontWeight: 800, fontStretch: '85%', textTransform: 'uppercase', lineHeight: 1 },
-      body1: { fontSize: '1.0625rem', lineHeight: 1.55 },
-      body2: { fontSize: '0.9375rem', lineHeight: 1.55 },
+      body1: { fontSize: '1.0625rem', lineHeight: 1.7 },
+      body2: { fontSize: '0.9375rem', lineHeight: 1.65 },
       button: { fontWeight: 700, textTransform: 'none', letterSpacing: 0 },
       overline: {
         fontFamily: monoFontFamily,
@@ -70,6 +70,18 @@ export function createAppTheme(mode: PaletteMode) {
             WebkitFontSmoothing: 'antialiased',
             MozOsxFontSmoothing: 'grayscale',
           },
+          ':where(a, button, [tabindex]):focus-visible': {
+            outline: '2px solid currentColor',
+            outlineOffset: 4,
+          },
+          '@media (prefers-reduced-motion: reduce)': {
+            '*, *::before, *::after': {
+              transitionDuration: '0.01ms !important',
+              animationDuration: '0.01ms !important',
+              animationIterationCount: '1 !important',
+              scrollBehavior: 'auto !important',
+            },
+          },
           '::selection': { backgroundColor: brandPalette.red, color: brandPalette.white },
         },
       },
@@ -87,6 +99,7 @@ export function createAppTheme(mode: PaletteMode) {
         styleOverrides: {
           root: {
             borderRadius: 0,
+            minHeight: 44,
             padding: '12px 20px',
             transition: `color 150ms ${easing}, background-color 150ms ${easing}, border-color 150ms ${easing}`,
           },

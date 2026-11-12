@@ -1,140 +1,60 @@
 import { Box, Button, ButtonBase, Typography } from '@mui/material'
-import {
-  archiveStatusFilterOptions,
-  defaultArchiveStatusFilter,
-  galleryCopy,
-  type ArchiveStatusFilter,
-} from '@/content/galleryCopy'
+import { useState } from 'react'
+import { archiveStatusFilterOptions, defaultArchiveStatusFilter, galleryCopy, type ArchiveStatusFilter } from '@/content/galleryCopy'
 import { SECTION_ARCHIVE_ID, SECTION_SCROLL_MARGIN } from '@/constants/gallery'
 import { countSpecimensByStatusFilter, getSpecimensByStatusFilter } from '@/services/specimens/catalog'
-import { useState } from 'react'
+import { brandPalette as colors } from '@/theme/appColorTokens'
 import { GalleryContentBounds } from './GalleryContentBounds'
 import { SpecimenCard } from './SpecimenCard'
 
-const INITIAL_VISIBLE_COUNT = 12
 const PAGE_SIZE = 12
-
-type ArchiveFilterProps = {
-  value: ArchiveStatusFilter
-  onChange: (value: ArchiveStatusFilter) => void
-}
-
-function ArchiveFilter({ value, onChange }: ArchiveFilterProps) {
-  return (
-    <Box
-      role="group"
-      aria-label={galleryCopy.archive.filterGroupAriaLabel}
-      sx={{ display: 'flex', flexWrap: 'wrap', columnGap: 2.5, rowGap: 1 }}
-    >
-      {archiveStatusFilterOptions.map((option) => {
-        const count = countSpecimensByStatusFilter(option.value)
-        const selected = option.value === value
-        return (
-          <ButtonBase
-            key={option.value}
-            onClick={() => onChange(option.value)}
-            aria-pressed={selected}
-            disabled={count === 0}
-            sx={{
-              color: selected ? 'text.primary' : 'text.secondary',
-              textDecoration: 'underline',
-              textDecorationThickness: '1.5px',
-              textUnderlineOffset: '5px',
-              textDecorationColor: selected ? 'currentColor' : 'transparent',
-              '&:hover': { color: 'text.primary' },
-              '&.Mui-disabled': { opacity: 0.4 },
-              '&:focus-visible': { outline: '2px solid', outlineColor: 'primary.main', outlineOffset: 2 },
-            }}
-          >
-            <Typography variant="overline" component="span">
-              {option.label}{' '}
-              <Box component="span" sx={{ opacity: 0.6 }}>
-                ({count})
-              </Box>
-            </Typography>
-          </ButtonBase>
-        )
-      })}
-    </Box>
-  )
-}
 
 export function ArchiveGrid() {
   const { archive } = galleryCopy
   const [filter, setFilter] = useState<ArchiveStatusFilter>(defaultArchiveStatusFilter)
-  const [visibleCount, setVisibleCount] = useState<number>(INITIAL_VISIBLE_COUNT)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const filtered = getSpecimensByStatusFilter(filter)
-  const visible = filtered.slice(0, visibleCount)
-  const canLoadMore = visibleCount < filtered.length
-
-  const handleFilterChange = (value: ArchiveStatusFilter) => {
-    setFilter(value)
-    setVisibleCount(INITIAL_VISIBLE_COUNT)
-  }
 
   return (
-    <Box
-      component="section"
-      id={SECTION_ARCHIVE_ID}
-      aria-labelledby="archive-title"
-      sx={{ pt: { xs: 8, md: 12 }, pb: { xs: 10, md: 14 }, scrollMarginTop: SECTION_SCROLL_MARGIN }}
-    >
+    <Box component="section" id={SECTION_ARCHIVE_ID} aria-labelledby="archive-title" sx={{
+      bgcolor: colors.paper, color: colors.ink, py: { xs: 7, md: 11 }, scrollMarginTop: SECTION_SCROLL_MARGIN,
+    }}>
       <GalleryContentBounds>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            columnGap: 4,
-            rowGap: 2,
-            pb: 2,
-            mb: { xs: 4, md: 5 },
-            borderBottom: '1.5px solid',
-            borderColor: 'text.primary',
-          }}
-        >
-          <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
-            <Typography id="archive-title" variant="h2" sx={{ fontSize: { xs: '3rem', md: '4.5rem' } }}>
-              {archive.sectionTitle}
-            </Typography>
-            <Typography variant="overline" color="text.secondary">
-              {archive.countLabel(filtered.length)}
-            </Typography>
-          </Box>
-          <ArchiveFilter value={filter} onChange={handleFilterChange} />
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 3, mb: 4, pb: 2, borderBottom: `1px solid ${colors.ink}` }}>
+          <Typography variant="overline">Ediciones Mox / Catálogo 2026</Typography>
+          <Typography variant="overline" sx={{ textAlign: 'right' }}>Coyoacán, CDMX ↗</Typography>
         </Box>
-
-        {visible.length === 0 ? (
-          <Typography variant="body2" color="text.secondary">
-            {archive.empty}
-          </Typography>
-        ) : (
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' },
-              columnGap: { xs: 3, md: 4 },
-              rowGap: { xs: 6, md: 7 },
-            }}
-          >
-            {visible.map((specimen) => (
-              <SpecimenCard key={specimen.id} specimen={specimen} />
-            ))}
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) 300px' }, gap: 4, alignItems: 'end', mb: 5 }}>
+          <Box>
+            <Typography variant="overline" sx={{ color: colors.red, display: 'block', mb: 2 }}>Tirajes cortos. Personajes propios.</Typography>
+            <Typography id="archive-title" variant="h2" sx={{ fontSize: { xs: '3.5rem', sm: '5rem', md: '6.5rem' }, lineHeight: 0.94 }}>
+              Fuera de<Box component="span" sx={{ display: 'block', color: colors.red }}>serie<span aria-hidden="true"> ✳</span></Box>
+            </Typography>
           </Box>
-        )}
-
-        {canLoadMore && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}>
-            <Button
-              variant="outlined"
-              color="inherit"
-              onClick={() => setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, filtered.length))}
-            >
-              {archive.loadMore}
-            </Button>
+          <Typography variant="body1" sx={{ maxWidth: 360, color: colors.inkSoft }}>El archivo de nuestros monstruos. Explora las piezas, sus variantes y las colaboraciones que salen del taller.</Typography>
+        </Box>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 2, mb: 4 }}>
+          <Box role="group" aria-label={archive.filterGroupAriaLabel} sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            {archiveStatusFilterOptions.map((option) => {
+              const selected = option.value === filter
+              const count = countSpecimensByStatusFilter(option.value)
+              return <ButtonBase key={option.value} aria-pressed={selected} disabled={!count}
+                onClick={() => { setFilter(option.value); setVisibleCount(PAGE_SIZE) }}
+                sx={{ minHeight: 44, px: 2, border: `1px solid ${selected ? colors.ink : colors.inkSoft}`, bgcolor: selected ? colors.ink : 'transparent', color: selected ? colors.paper : colors.ink,
+                  '&:hover': { bgcolor: selected ? colors.ink : colors.paperRaised }, '&.Mui-disabled': { opacity: 0.4 } }}>
+                <Typography variant="overline">{option.label} <Box component="span" sx={{ ml: 1 }}>{String(count).padStart(2, '0')}</Box></Typography>
+              </ButtonBase>
+            })}
           </Box>
-        )}
+          <Typography variant="overline">{archive.countLabel(filtered.length)}</Typography>
+        </Box>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'minmax(0, 1fr)', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(3, minmax(0, 1fr))' }, gap: 3 }}>
+          {filtered.slice(0, visibleCount).map((specimen) => <SpecimenCard key={specimen.id} specimen={specimen} />)}
+        </Box>
+        {!filtered.length && <Typography>{archive.empty}</Typography>}
+        {visibleCount < filtered.length && <Box sx={{ textAlign: 'center', mt: 6 }}>
+          <Button onClick={() => setVisibleCount((count) => count + PAGE_SIZE)} variant="outlined" sx={{ color: colors.ink, borderColor: colors.ink, px: 5, '&:hover': { borderColor: colors.ink, bgcolor: colors.paperRaised } }}>{archive.loadMore} +</Button>
+        </Box>}
       </GalleryContentBounds>
     </Box>
   )

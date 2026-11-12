@@ -26,7 +26,7 @@ export default function LinksPage() {
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
+              gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 5fr) minmax(0, 7fr)' },
               columnGap: { md: 8, lg: 12 },
               rowGap: 4,
             }}
@@ -53,7 +53,7 @@ export default function LinksPage() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          sx={{ color: 'text.primary', '&:hover': { color: 'primary.main' } }}
+                          sx={{ color: 'text.primary', overflowWrap: 'anywhere', '&:hover': { color: 'primary.main' } }}
                         >
                           <Typography variant="h3" component="span" sx={{ fontSize: { xs: '1.375rem', md: '1.625rem' } }}>
                             {item.name} ↗

@@ -19,14 +19,13 @@ export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imag
   return (
     <Box
       className="protected-image-root"
-      sx={{
+      sx={[{
         position: 'relative',
         display: 'inline-block',
         maxWidth: '100%',
         userSelect: 'none',
         WebkitUserSelect: 'none',
-        ...wrapperSx,
-      }}
+      }, ...(Array.isArray(wrapperSx) ? wrapperSx : wrapperSx ? [wrapperSx] : [])]}
       onContextMenu={blockImageInteraction}
       onDragStart={blockImageInteraction}
     >
@@ -42,15 +41,14 @@ export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imag
         draggable={false}
         onContextMenu={blockImageInteraction}
         onDragStart={blockImageInteraction}
-        sx={{
+        sx={[{
           display: 'block',
           maxWidth: '100%',
           height: 'auto',
           userSelect: 'none',
           WebkitUserDrag: 'none',
           pointerEvents: 'none',
-          ...imageSx,
-        }}
+        }, ...(Array.isArray(imageSx) ? imageSx : imageSx ? [imageSx] : [])]}
       />
       <Box
         aria-hidden

@@ -4,4 +4,4 @@ export const SITE_NAME = 'Ediciones Mox'
 
 export const DEFAULT_PAGE_TITLE = 'Ediciones Mox · Art toys mexicanos hechos a mano en CDMX'
 export const DEFAULT_PAGE_DESCRIPTION =
-  'Art toys mexicanos: monstruos y kaijus propios, impresos en PLA y pintados a mano en Coyoacán, CDMX. Tirajes cortos y numerados.'
+  'Art toys mexicanos: esculturas de resina y personajes con impresión 3D, pintados a mano en Coyoacán, CDMX. Kaijus de bolsillo en tirajes cortos.'

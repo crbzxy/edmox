@@ -12,6 +12,8 @@ function PagerLink({ specimen, label, align }: { specimen: Specimen; label: stri
       to={appPaths.specimenDetail(specimen.id)}
       sx={{
         display: 'block',
+        minWidth: 0,
+        overflowWrap: 'anywhere',
         textAlign: align,
         color: 'inherit',
         textDecoration: 'none',
@@ -44,7 +46,7 @@ export function SpecimenDetailPager({ specimenId }: { specimenId: string }) {
         borderTop: '1.5px solid',
         borderColor: 'text.primary',
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
         gap: 3,
       }}
     >

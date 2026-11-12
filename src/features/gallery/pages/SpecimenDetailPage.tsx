@@ -25,13 +25,13 @@ export default function SpecimenDetailPage() {
   return (
     <>
       <SpecimenPageMeta specimen={specimen} />
-      <Box sx={{ pt: { xs: 10, sm: 12 }, pb: { xs: 10, md: 14 } }}>
+      <Box sx={{ pt: { xs: 13, sm: 16 }, pb: { xs: 14, md: 18 } }}>
         <GalleryContentBounds>
           <SpecimenDetailBackLink />
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '7fr 5fr' },
+              gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 7fr) minmax(0, 5fr)' },
               columnGap: { md: 6, lg: 8 },
               rowGap: 4,
               alignItems: 'start',

@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import { ProtectedImage } from '@/components/ProtectedImage'
 import { SPECIMEN_DETAIL_IMAGE_MAX_HEIGHT } from '@/constants/galleryUi'
+import { GALLERY_HEADER_HEIGHT } from '@/constants/gallery'
 import type { Specimen } from '@/data/specimens'
 import { specimenImageAlt } from '@/services/specimens/catalog'
 
@@ -13,7 +14,7 @@ export function SpecimenDetailImagePanel({ specimen }: SpecimenDetailImagePanelP
     <Box
       sx={{
         position: { md: 'sticky' },
-        top: { md: 92 },
+        top: { md: `calc(${GALLERY_HEADER_HEIGHT.sm} + 24px)` },
         display: 'flex',
         justifyContent: 'center',
         bgcolor: 'secondary.main',
@@ -22,7 +23,7 @@ export function SpecimenDetailImagePanel({ specimen }: SpecimenDetailImagePanelP
       <ProtectedImage
         src={specimen.image}
         srcSet={specimen.imageSrcSet}
-        sizes="(min-width: 900px) 700px, calc(100vw - 32px)"
+        sizes="(min-width: 900px) 700px, (min-width: 600px) calc(100vw - 64px), calc(100vw - 48px)"
         alt={specimenImageAlt(specimen)}
         loading="eager"
         imageSx={{ maxWidth: '100%', maxHeight: SPECIMEN_DETAIL_IMAGE_MAX_HEIGHT, objectFit: 'contain' }}

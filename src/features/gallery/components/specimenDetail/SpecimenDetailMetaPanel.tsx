@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Link as MuiLink, Typography } from '@mui/material'
 import { galleryCopy } from '@/content/galleryCopy'
 import { GALLERY_INSTAGRAM_URL } from '@/constants/gallery'
 import type { Specimen } from '@/data/specimens'
@@ -30,7 +30,7 @@ function SpecimenMetadataTable({ specimen }: SpecimenDetailMetaPanelProps) {
           key={label}
           sx={{
             display: 'grid',
-            gridTemplateColumns: '7rem 1fr',
+            gridTemplateColumns: 'minmax(0, 7rem) minmax(0, 1fr)',
             gap: 2,
             py: 1.25,
             borderBottom: '1px solid',
@@ -40,7 +40,7 @@ function SpecimenMetadataTable({ specimen }: SpecimenDetailMetaPanelProps) {
           <Typography component="dt" variant="overline" color="text.secondary">
             {label}
           </Typography>
-          <Typography component="dd" variant="overline" sx={{ m: 0 }}>
+          <Typography component="dd" variant="overline" sx={{ m: 0, overflowWrap: 'anywhere' }}>
             {value}
           </Typography>
         </Box>
@@ -75,6 +75,12 @@ export function SpecimenDetailMetaPanel({ specimen }: SpecimenDetailMetaPanelPro
       </Typography>
 
       <SpecimenMetadataTable specimen={specimen} />
+
+      {specimen.sourceUrl && (
+        <MuiLink href={specimen.sourceUrl} target="_blank" rel="noopener noreferrer" sx={{ display: 'inline-flex', mt: 3, minHeight: 44, alignItems: 'center', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+          Ver publicación original ↗
+        </MuiLink>
+      )}
 
       <Box sx={{ mt: 4 }}>
         {specimen.status === 'sold' ? (
