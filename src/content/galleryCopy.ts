@@ -116,6 +116,7 @@ export const galleryCopy = {
     backArrow: '←',
     notFoundMessage: 'No encontramos esta pieza en el archivo.',
     inquireCta: 'Preguntar por esta pieza',
+    sourceCta: 'Ver publicación original',
     soldNote: 'Tiraje agotado. Síguenos en Instagram para enterarte de la siguiente edición.',
     previous: 'Anterior',
     next: 'Siguiente',
