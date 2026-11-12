@@ -59,3 +59,11 @@ Eventos: cartel en `src/assets/events/<id>.webp`, `npm run optimize:images` y en
 - Ramas: `feat/…`, `fix/…`, `chore/…`, `content/…`, `perf/…`, `improve/…`.
 - Commits en formato Conventional Commits: `feat:`, `fix:`, `perf:`, `style:`, `content:`, `chore:`, `docs:`.
 - No commitear `dist/`, `reports/`, `_ref-gallery/` ni originales sin procesar.
+
+## Analytics (Google Tag Manager)
+
+- Contenedor `GTM_ID` en `src/constants/site.ts`; se carga desde `src/analytics/gtm.ts` (sin `<script>` inline, para mantener la CSP sin `'unsafe-inline'`).
+- Solo se activa en el dominio de producción. En deploy previews o localhost: abrir con `?gtm_debug=x` (Tag Assistant lo agrega solo).
+- SPA: la carga inicial dispara el evento estándar `gtm.js`; cada navegación cliente envía `virtual_page_view` (`page_path`, `page_location`, `page_title`) desde `usePageMeta`, después de actualizar el título.
+- Usar **una sola** fuente de page views por navegación: o el evento `virtual_page_view`, o la medición mejorada de GA4 por historial, no ambas.
+- Agregar otro proveedor dentro de GTM (Meta Pixel, Hotjar…) requiere permitir sus dominios en la CSP de `netlify.toml`, o el navegador lo bloqueará.

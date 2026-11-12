@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { trackPageView } from '@/analytics/gtm'
 import { galleryCopy } from '@/content/galleryCopy'
 import { absoluteUrl, OG_IMAGE_SIZE, type PageMetaData } from '@/seo/pageMeta'
 
@@ -26,6 +27,7 @@ export function usePageMeta(meta: PageMetaData) {
   useEffect(() => {
     const url = absoluteUrl(path)
     document.title = title
+    trackPageView({ path: window.location.pathname, title })
     setAttr('meta[name="description"]', 'content', description)
     setAttr('link[rel="canonical"]', 'href', url)
     setAttr('meta[property="og:title"]', 'content', title)
