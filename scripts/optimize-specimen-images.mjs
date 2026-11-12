@@ -70,7 +70,6 @@ async function optimizeSpecimenImages() {
     })
 
     console.log(`  ${fileName} → ${baseName}.webp (${savedPercent}% más liviano)`)
-    fs.unlinkSync(sourcePath)
   }
 
   return sources.length
@@ -100,7 +99,6 @@ async function optimizeHeroImages() {
     })
 
     console.log(`  ${path.basename(sourcePath)} → ${baseName}.webp (${savedPercent}% más liviano)`)
-    fs.unlinkSync(sourcePath)
     converted += 1
   }
 
