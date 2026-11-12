@@ -19,13 +19,16 @@ export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imag
   return (
     <Box
       className="protected-image-root"
-      sx={[{
-        position: 'relative',
-        display: 'inline-block',
-        maxWidth: '100%',
-        userSelect: 'none',
-        WebkitUserSelect: 'none',
-      }, ...(Array.isArray(wrapperSx) ? wrapperSx : wrapperSx ? [wrapperSx] : [])]}
+      sx={[
+        {
+          position: 'relative',
+          display: 'inline-block',
+          maxWidth: '100%',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+        },
+        ...(Array.isArray(wrapperSx) ? wrapperSx : wrapperSx ? [wrapperSx] : []),
+      ]}
       onContextMenu={blockImageInteraction}
       onDragStart={blockImageInteraction}
     >
@@ -41,14 +44,17 @@ export function ProtectedImage({ src, srcSet, sizes, alt, loading = 'lazy', imag
         draggable={false}
         onContextMenu={blockImageInteraction}
         onDragStart={blockImageInteraction}
-        sx={[{
-          display: 'block',
-          maxWidth: '100%',
-          height: 'auto',
-          userSelect: 'none',
-          WebkitUserDrag: 'none',
-          pointerEvents: 'none',
-        }, ...(Array.isArray(imageSx) ? imageSx : imageSx ? [imageSx] : [])]}
+        sx={[
+          {
+            display: 'block',
+            maxWidth: '100%',
+            height: 'auto',
+            userSelect: 'none',
+            WebkitUserDrag: 'none',
+            pointerEvents: 'none',
+          },
+          ...(Array.isArray(imageSx) ? imageSx : imageSx ? [imageSx] : []),
+        ]}
       />
       <Box
         aria-hidden

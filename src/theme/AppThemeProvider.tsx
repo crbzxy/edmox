@@ -10,10 +10,7 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {
     defaultMatches: false,
   })
-  const theme = useMemo(
-    () => createAppTheme(prefersDarkMode ? 'dark' : 'light'),
-    [prefersDarkMode],
-  )
+  const theme = useMemo(() => createAppTheme(prefersDarkMode ? 'dark' : 'light'), [prefersDarkMode])
 
   return (
     <ThemeProvider theme={theme}>

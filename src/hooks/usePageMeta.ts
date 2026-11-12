@@ -12,7 +12,8 @@ type PageMeta = {
   jsonLd?: Record<string, unknown>
 }
 
-const absolute = (url: string) => (/^https?:\/\//.test(url) ? url : `${SITE_URL}${url.startsWith('/') ? '' : '/'}${url}`)
+const absolute = (url: string) =>
+  /^https?:\/\//.test(url) ? url : `${SITE_URL}${url.startsWith('/') ? '' : '/'}${url}`
 
 function setMeta(selector: string, attr: 'content' | 'href', value: string) {
   const el = document.head.querySelector(selector)

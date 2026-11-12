@@ -48,7 +48,8 @@ function validate() {
     const match = typeof specimen.id === 'string' ? specimen.id.match(idPattern) : null
     if (!match) errors.push(`ID con formato inválido (esperado mox-001): ${specimen.id}`)
 
-    if (specimen.status !== undefined && !allowedStatuses.has(specimen.status)) errors.push(`Status inválido para ${specimen.id}: ${specimen.status}`)
+    if (specimen.status !== undefined && !allowedStatuses.has(specimen.status))
+      errors.push(`Status inválido para ${specimen.id}: ${specimen.status}`)
 
     if (typeof specimen.imageFile !== 'string') {
       errors.push(`Falta "imageFile" para ${specimen.id}`)
@@ -73,4 +74,3 @@ function validate() {
 }
 
 validate()
-
