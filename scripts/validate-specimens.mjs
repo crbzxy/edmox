@@ -10,6 +10,8 @@ const manifestPath = path.join(assetsDir, 'optimized', 'manifest.json')
 
 const allowedStatuses = new Set(['available', 'sold', 'pre-order'])
 const idPattern = /^mox-\d{3}$/
+// Nombre de archivo plano: sin carpetas ni `..` (el build lee y escribe rutas a partir de este valor).
+const imageFilePattern = /^mox-\d{3}[a-z0-9-]*\.webp$/
 const currentYear = new Date().getFullYear()
 
 /** Campos permitidos: tipo y si son obligatorios. Un campo desconocido es error (atrapa typos como "staus"). */
@@ -38,6 +40,16 @@ function readJson(filePath) {
   } catch (error) {
     fail(`No se pudo leer ${path.relative(rootDir, filePath)}: ${error.message}`)
     return undefined
+  }
+}
+
+/** URL absoluta https sin credenciales embebidas (`https://user:pass@…`). */
+function isHttpsUrl(value) {
+  try {
+    const url = new URL(value)
+    return url.protocol === 'https:' && !url.username && !url.password
+  } catch {
+    return false
   }
 }
 
@@ -72,10 +84,14 @@ function validateSpecimen(specimen, index, seenIds, manifest) {
   if (typeof specimen.year === 'number' && (specimen.year < 2000 || specimen.year > currentYear + 1)) {
     fail(`${label}: año fuera de rango (${specimen.year}).`)
   }
-  if (typeof specimen.sourceUrl === 'string' && !/^https:\/\//.test(specimen.sourceUrl)) {
-    fail(`${label}: sourceUrl debe empezar con https://.`)
+  if (typeof specimen.sourceUrl === 'string' && !isHttpsUrl(specimen.sourceUrl)) {
+    fail(`${label}: sourceUrl debe ser una URL https:// válida.`)
   }
 
+  if (typeof specimen.imageFile === 'string' && !imageFilePattern.test(specimen.imageFile)) {
+    fail(`${label}: imageFile inválido "${specimen.imageFile}" (esperado mox-001.webp, sin carpetas).`)
+    return
+  }
   if (typeof specimen.imageFile === 'string') {
     if (!fs.existsSync(path.join(assetsDir, 'specimens', specimen.imageFile))) {
       fail(`${label}: imagen no encontrada en src/assets/specimens/${specimen.imageFile}.`)
