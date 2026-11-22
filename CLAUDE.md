@@ -14,7 +14,7 @@ Este archivo es el estándar del repo: aplica a personas y a agentes por igual.
 | `npm run optimize:specimens` | Convierte fotos PNG/JPG de `src/assets/specimens/` a WebP                   |
 | `npm run optimize:images`    | Genera variantes AVIF/WebP y `manifest.json` (hero, eventos y piezas)       |
 
-CI (`.github/workflows/ci.yml`) corre formato, lint, typecheck, validación y build en cada PR. Node 24 (`.nvmrc`).
+CI (`.github/workflows/ci.yml`) corre `npm audit --audit-level=high`, formato, lint, typecheck, validación y build en cada PR. Node 24 (`.nvmrc`). Dependabot (`.github/dependabot.yml`) abre PRs semanales de npm (minor/patch agrupados) y mensuales de GitHub Actions.
 
 ## Estructura
 
@@ -50,7 +50,7 @@ Alias de import: `@/` apunta a `src/`. Usarlo siempre en vez de rutas relativas 
 1. Copiar la foto a `src/assets/specimens/mox-0XX.(png|jpg|webp)`. Si no es WebP: `npm run optimize:specimens`.
 2. `npm run optimize:images` (genera variantes en `src/assets/optimized/` y actualiza `manifest.json`).
 3. Agregar la entrada en `src/data/specimens.json`. Obligatorios: `id` (`mox-001`), `name`, `artist`, `year`, `material`, `imageFile`, `description`. Opcionales: `height`, `origin`, `sourceUrl`, `edition`, `status` (`available` | `sold` | `pre-order`), `collaboration` (`true` muestra la insignia).
-4. `npm run check`. El validador rechaza campos desconocidos, tipos incorrectos e imágenes sin variantes. El sitemap se regenera solo en el build.
+4. `npm run check`. El validador rechaza campos desconocidos, tipos incorrectos e imágenes sin variantes. `imageFile` debe ser un nombre plano `mox-0XX….webp` (sin carpetas ni `..`) y `sourceUrl` una URL `https://` válida sin usuario/contraseña. El sitemap se regenera solo en el build.
 
 Eventos: cartel en `src/assets/events/<id>.webp`, `npm run optimize:images` y entrada en `src/data/events.ts` con `poster: responsiveImage('event-<id>')`.
 
@@ -61,6 +61,8 @@ Eventos: cartel en `src/assets/events/<id>.webp`, `npm run optimize:images` y en
 - **Sin datos personales**: no versionar teléfonos, correos o direcciones personales; el contacto público es Instagram (`brand.instagramHandle`). La ubicación pública es solo "Coyoacán, CDMX".
 - **Material de diseño fuera del repo**: `_ref-gallery/`, `reports/` y `originals/` están ignorados; no forzarlos con `git add -f`.
 - **Autor de commits**: usar el email `noreply` de GitHub (`git config user.email "<id>+<usuario>@users.noreply.github.com"`) para no publicar correos personales o de trabajo.
+- **CI con mínimo privilegio**: el workflow usa `permissions: contents: read` y `persist-credentials: false`. Las acciones van fijadas por SHA con el tag en comentario (`uses: actions/checkout@<sha> # v4`); no volver a tags sueltos. Dependabot actualiza los SHA.
+- **Cabeceras HTTP** (`netlify.toml`): CSP con `script-src` sin `'unsafe-inline'` (estilos sí lo permiten, por MUI/Emotion), `X-Frame-Options: DENY`, `Permissions-Policy` restrictiva (incluye `browsing-topics=()`), `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Resource-Policy: same-site` y `X-Permitted-Cross-Domain-Policies: none`. Si un recurso propio debe cargarse desde otro dominio, CORP lo bloqueará: ajustarlo para esa ruta, no globalmente.
 
 ## Git
 
